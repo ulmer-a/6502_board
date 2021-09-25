@@ -252,10 +252,10 @@ Wire Wire Line
 Text Notes 4000 2850 0    50   ~ 0
 8KB EEPROM\nmapped at 0xe000
 $Comp
-L 74xx:74LS273 U4
+L 74xx:74LS273 U6
 U 1 1 61596ABA
 P 2650 5900
-F 0 "U4" H 2650 6881 50  0000 C CNN
+F 0 "U6" H 2650 6881 50  0000 C CNN
 F 1 "74LS273" H 2650 6790 50  0000 C CNN
 F 2 "" H 2650 5900 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS273" H 2650 5900 50  0001 C CNN
@@ -436,19 +436,19 @@ Wire Wire Line
 Text GLabel 4400 2050 2    50   Input ~ 0
 _CS_ROM1
 Wire Wire Line
-	5750 1450 5250 1450
+	5750 1550 5250 1550
 $Comp
 L 74xx:74LS00 U3
 U 2 1 6155D31A
-P 6050 1450
-F 0 "U3" H 6050 1775 50  0000 C CNN
-F 1 "74LS00" H 6050 1684 50  0000 C CNN
-F 2 "" H 6050 1450 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6050 1450 50  0001 C CNN
-	2    6050 1450
+P 6050 1550
+F 0 "U3" H 6050 1875 50  0000 C CNN
+F 1 "74LS00" H 6050 1784 50  0000 C CNN
+F 2 "" H 6050 1550 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6050 1550 50  0001 C CNN
+	2    6050 1550
 	1    0    0    -1  
 $EndComp
-Text GLabel 5250 1450 0    50   Input ~ 0
+Text GLabel 5250 1550 0    50   Input ~ 0
 A15
 $Comp
 L 74xx:74LS00 U3
@@ -468,19 +468,19 @@ A14
 Text GLabel 5850 1000 2    50   Input ~ 0
 _CS_ROM0
 Wire Wire Line
-	5750 1350 5750 1450
-Wire Wire Line
 	5750 1450 5750 1550
-Connection ~ 5750 1450
-Text GLabel 6350 1450 2    50   Input ~ 0
+Wire Wire Line
+	5750 1550 5750 1650
+Connection ~ 5750 1550
+Text GLabel 6350 1550 2    50   Input ~ 0
 _CS_ROM1
 Text GLabel 4400 1850 2    50   Input ~ 0
 _CS_ROM0
 $Comp
-L Memory_RAM:CY7C199 U3
+L Memory_RAM:CY7C199 U4
 U 1 1 617C20A6
 P 10050 2100
-F 0 "U3" H 10050 3481 50  0000 C CNN
+F 0 "U4" H 10050 3481 50  0000 C CNN
 F 1 "CY7C199" H 10050 3390 50  0000 C CNN
 F 2 "" H 10050 2100 50  0001 C CNN
 F 3 "" H 10050 2100 50  0001 C CNN
@@ -588,10 +588,10 @@ RW_
 Wire Wire Line
 	9350 3000 9450 3000
 $Comp
-L 74xx:74LS00 U?
+L 74xx:74LS00 U3
 U 2 1 6180BAB2
 P 7150 1000
-F 0 "U?" H 7150 1325 50  0000 C CNN
+F 0 "U3" H 7150 1325 50  0000 C CNN
 F 1 "74LS00" H 7150 1234 50  0000 C CNN
 F 2 "" H 7150 1000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 7150 1000 50  0001 C CNN
@@ -645,4 +645,105 @@ F 3 "" H 10050 3300 50  0001 C CNN
 $EndComp
 Text Notes 9200 850  0    50   ~ 0
 32KB static RAM
+$Comp
+L chips:W65C51 U?
+U 1 1 61865D71
+P 7950 1550
+F 0 "U?" H 7950 1615 50  0000 C CNN
+F 1 "W65C51" H 7950 1524 50  0000 C CNN
+F 2 "" H 7950 1550 50  0001 C CNN
+F 3 "" H 7950 1550 50  0001 C CNN
+	1    7950 1550
+	1    0    0    -1  
+$EndComp
+Text GLabel 8400 1850 2    50   Input ~ 0
+D0
+Text GLabel 8400 1950 2    50   Input ~ 0
+D1
+Text GLabel 8400 2050 2    50   Input ~ 0
+D2
+Text GLabel 8400 2150 2    50   Input ~ 0
+D3
+Text GLabel 8400 2250 2    50   Input ~ 0
+D4
+Text GLabel 8400 2350 2    50   Input ~ 0
+D5
+Text GLabel 8400 2450 2    50   Input ~ 0
+D6
+Text GLabel 8400 2550 2    50   Input ~ 0
+D7
+Wire Wire Line
+	8300 2550 8400 2550
+Wire Wire Line
+	8400 2450 8300 2450
+Wire Wire Line
+	8300 2350 8400 2350
+Wire Wire Line
+	8400 2250 8300 2250
+Wire Wire Line
+	8300 2150 8400 2150
+Wire Wire Line
+	8400 2050 8300 2050
+Wire Wire Line
+	8300 1950 8400 1950
+Wire Wire Line
+	8400 1850 8300 1850
+Text GLabel 8400 2850 2    50   Input ~ 0
+A0
+Text GLabel 8400 2950 2    50   Input ~ 0
+A1
+Wire Wire Line
+	8300 2950 8400 2950
+Wire Wire Line
+	8400 2850 8300 2850
+$Comp
+L power:GND #PWR?
+U 1 1 618794AC
+P 8350 3100
+F 0 "#PWR?" H 8350 2850 50  0001 C CNN
+F 1 "GND" H 8355 2927 50  0000 C CNN
+F 2 "" H 8350 3100 50  0001 C CNN
+F 3 "" H 8350 3100 50  0001 C CNN
+	1    8350 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 61879D26
+P 8350 1650
+F 0 "#PWR?" H 8350 1500 50  0001 C CNN
+F 1 "+5V" H 8365 1823 50  0000 C CNN
+F 2 "" H 8350 1650 50  0001 C CNN
+F 3 "" H 8350 1650 50  0001 C CNN
+	1    8350 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8300 1750 8350 1750
+Wire Wire Line
+	8350 1750 8350 1650
+Wire Wire Line
+	8300 3050 8350 3050
+Wire Wire Line
+	8350 3050 8350 3100
+Text GLabel 7500 2850 0    50   Input ~ 0
+_IRQ
+Text GLabel 7500 2750 0    50   Input ~ 0
+UART_RX
+Text GLabel 7500 2550 0    50   Input ~ 0
+UART_TX
+Wire Wire Line
+	7500 2550 7600 2550
+Wire Wire Line
+	7500 2750 7600 2750
+Wire Wire Line
+	7500 2850 7600 2850
+Text GLabel 7500 2950 0    50   Input ~ 0
+CLK
+Wire Wire Line
+	7500 2950 7600 2950
+Text GLabel 7500 3050 0    50   Input ~ 0
+RW_
+Wire Wire Line
+	7500 3050 7600 3050
 $EndSCHEMATC
