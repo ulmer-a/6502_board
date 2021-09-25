@@ -144,4 +144,146 @@ F 3 "" H 9850 3950 50  0001 C CNN
 	1    9850 3950
 	1    0    0    -1  
 $EndComp
+$Comp
+L chips:AT28C64B U2
+U 1 1 6150BBE2
+P 7500 1000
+F 0 "U2" H 7500 1115 50  0000 C CNN
+F 1 "AT28C64B" H 7500 1024 50  0000 C CNN
+F 2 "" H 7500 1000 50  0001 C CNN
+F 3 "" H 7500 1000 50  0001 C CNN
+	1    7500 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7850 1150 7950 1150
+Wire Wire Line
+	7950 1150 7950 1000
+$Comp
+L power:+5V #PWR?
+U 1 1 61512F2C
+P 7950 1000
+F 0 "#PWR?" H 7950 850 50  0001 C CNN
+F 1 "+5V" H 7965 1173 50  0000 C CNN
+F 2 "" H 7950 1000 50  0001 C CNN
+F 3 "" H 7950 1000 50  0001 C CNN
+	1    7950 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61513D4B
+P 7000 2650
+F 0 "#PWR?" H 7000 2400 50  0001 C CNN
+F 1 "GND" H 7005 2477 50  0000 C CNN
+F 2 "" H 7000 2650 50  0001 C CNN
+F 3 "" H 7000 2650 50  0001 C CNN
+	1    7000 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 2650 7000 2450
+Wire Wire Line
+	7000 2450 7150 2450
+Text GLabel 7900 1450 2    50   Input ~ 0
+A8
+Text GLabel 7900 1550 2    50   Input ~ 0
+A9
+Text GLabel 7900 1650 2    50   Input ~ 0
+A11
+Text GLabel 7900 1750 2    50   Input ~ 0
+_READ
+Text GLabel 7900 1850 2    50   Input ~ 0
+A10
+Text GLabel 7900 2050 2    50   Input ~ 0
+D7
+Text GLabel 7900 2150 2    50   Input ~ 0
+D6
+Text GLabel 7900 2250 2    50   Input ~ 0
+D5
+Text GLabel 7900 2350 2    50   Input ~ 0
+D4
+Text GLabel 7900 2450 2    50   Input ~ 0
+D3
+Text GLabel 7100 1250 0    50   Input ~ 0
+A12
+Text GLabel 7100 1350 0    50   Input ~ 0
+A7
+Text GLabel 7100 1450 0    50   Input ~ 0
+A6
+Text GLabel 7100 1550 0    50   Input ~ 0
+A5
+Text GLabel 7100 1650 0    50   Input ~ 0
+A4
+Text GLabel 7100 1750 0    50   Input ~ 0
+A3
+Text GLabel 7100 1850 0    50   Input ~ 0
+A2
+Text GLabel 7100 1950 0    50   Input ~ 0
+A1
+Text GLabel 7100 2050 0    50   Input ~ 0
+A0
+Text GLabel 7100 2150 0    50   Input ~ 0
+D0
+Text GLabel 7100 2250 0    50   Input ~ 0
+D1
+Text GLabel 7100 2350 0    50   Input ~ 0
+D2
+Wire Wire Line
+	7100 2150 7150 2150
+Wire Wire Line
+	7100 2250 7150 2250
+Wire Wire Line
+	7100 2350 7150 2350
+Wire Wire Line
+	7850 2450 7900 2450
+Wire Wire Line
+	7900 2350 7850 2350
+Wire Wire Line
+	7850 2250 7900 2250
+Wire Wire Line
+	7900 2150 7850 2150
+Wire Wire Line
+	7850 2050 7900 2050
+Wire Wire Line
+	7850 1250 7950 1250
+Wire Wire Line
+	7950 1250 7950 1150
+Connection ~ 7950 1150
+Wire Wire Line
+	7850 1450 7900 1450
+Wire Wire Line
+	7850 1550 7900 1550
+Wire Wire Line
+	7850 1650 7900 1650
+Wire Wire Line
+	7850 1850 7900 1850
+Wire Wire Line
+	7100 2050 7150 2050
+Wire Wire Line
+	7150 1950 7100 1950
+Wire Wire Line
+	7100 1850 7150 1850
+Wire Wire Line
+	7150 1750 7100 1750
+Wire Wire Line
+	7100 1650 7150 1650
+Wire Wire Line
+	7150 1550 7100 1550
+Wire Wire Line
+	7100 1450 7150 1450
+Wire Wire Line
+	7150 1350 7100 1350
+Wire Wire Line
+	7100 1250 7150 1250
+Text GLabel 9100 2950 0    50   Input ~ 0
+_READ
+Wire Wire Line
+	9100 2950 9150 2950
+Wire Wire Line
+	7850 1750 7900 1750
+Text GLabel 7900 1950 2    50   Input ~ 0
+_CS_ROM
+Wire Wire Line
+	7850 1950 7900 1950
 $EndSCHEMATC
