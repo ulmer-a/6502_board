@@ -286,4 +286,46 @@ Text GLabel 7900 1950 2    50   Input ~ 0
 _CS_ROM
 Wire Wire Line
 	7850 1950 7900 1950
+Text Notes 9300 950  0    50   ~ 0
+Z80 CPU
+Text Notes 6900 800  0    50   ~ 0
+8KB EEPROM
+$Comp
+L 74xx:74LS00 U1
+U 1 1 615529D3
+P 5150 1200
+F 0 "U1" H 5150 1525 50  0000 C CNN
+F 1 "74LS00" H 5150 1434 50  0000 C CNN
+F 2 "" H 5150 1200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 5150 1200 50  0001 C CNN
+	1    5150 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74LS00 U1
+U 2 1 6155D31A
+P 5750 1300
+F 0 "U1" H 5750 1625 50  0000 C CNN
+F 1 "74LS00" H 5750 1534 50  0000 C CNN
+F 2 "" H 5750 1300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 5750 1300 50  0001 C CNN
+	2    5750 1300
+	1    0    0    -1  
+$EndComp
+Text GLabel 4850 1100 0    50   Input ~ 0
+A13
+Text GLabel 4850 1300 0    50   Input ~ 0
+A14
+Text GLabel 4850 1500 0    50   Input ~ 0
+A15
+Wire Wire Line
+	4850 1500 5200 1500
+Wire Wire Line
+	5200 1500 5200 1400
+Wire Wire Line
+	5200 1400 5450 1400
+Text GLabel 6050 1300 2    50   Input ~ 0
+_CS_ROM
+Text Notes 4800 800  0    50   ~ 0
+ROM is mapped at at address 0x0000
 $EndSCHEMATC
