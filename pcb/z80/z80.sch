@@ -166,8 +166,6 @@ Text GLabel 4400 1650 2    50   Input ~ 0
 A9
 Text GLabel 4400 1750 2    50   Input ~ 0
 A11
-Text GLabel 4400 1850 2    50   Input ~ 0
-ROM_DISABLE
 Text GLabel 4400 1950 2    50   Input ~ 0
 A10
 Text GLabel 4400 2150 2    50   Input ~ 0
@@ -251,24 +249,8 @@ Wire Wire Line
 	3650 1450 3600 1450
 Wire Wire Line
 	3600 1350 3650 1350
-Wire Wire Line
-	4350 1850 4400 1850
-Text GLabel 4400 2050 2    50   Input ~ 0
-_CS_ROM
-Wire Wire Line
-	4350 2050 4400 2050
 Text Notes 4000 2850 0    50   ~ 0
-8KB EEPROM
-Text GLabel 5500 1050 0    50   Input ~ 0
-A13
-Text GLabel 5500 1250 0    50   Input ~ 0
-A14
-Text GLabel 5500 1450 0    50   Input ~ 0
-A15
-Text GLabel 6700 1250 2    50   Input ~ 0
-_CS_ROM
-Text Notes 5400 1750 0    50   ~ 0
-ROM is mapped at at address 0x0000
+8KB EEPROM\nmapped at 0xe000
 $Comp
 L 74xx:74LS273 U4
 U 1 1 61596ABA
@@ -356,34 +338,6 @@ Text GLabel 3150 6000 2    50   Input ~ 0
 IO6
 Text Notes 3100 6450 0    50   ~ 0
 Setting bit 7 of the board config \nregister will disable the ROM\n
-$Comp
-L 74xx:74LS00 U3
-U 2 1 6155D31A
-P 6400 1250
-F 0 "U3" H 6400 1575 50  0000 C CNN
-F 1 "74LS00" H 6400 1484 50  0000 C CNN
-F 2 "" H 6400 1250 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6400 1250 50  0001 C CNN
-	2    6400 1250
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS00 U3
-U 1 1 615529D3
-P 5800 1150
-F 0 "U3" H 5800 1475 50  0000 C CNN
-F 1 "74LS00" H 5800 1384 50  0000 C CNN
-F 2 "" H 5800 1150 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 5800 1150 50  0001 C CNN
-	1    5800 1150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5500 1450 5850 1450
-Wire Wire Line
-	5850 1450 5850 1350
-Wire Wire Line
-	5850 1350 6100 1350
 $Comp
 L chips:W65C02 U1
 U 1 1 61507660
@@ -475,4 +429,51 @@ Wire Wire Line
 	2150 1750 2250 1750
 Text Notes 1450 750  0    50   ~ 0
 WDC 65C02 CPU
+Wire Wire Line
+	4350 2050 4400 2050
+Wire Wire Line
+	4350 1850 4400 1850
+Text GLabel 4400 2050 2    50   Input ~ 0
+_CS_ROM1
+Wire Wire Line
+	5750 1450 5250 1450
+$Comp
+L 74xx:74LS00 U3
+U 2 1 6155D31A
+P 6050 1450
+F 0 "U3" H 6050 1775 50  0000 C CNN
+F 1 "74LS00" H 6050 1684 50  0000 C CNN
+F 2 "" H 6050 1450 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 6050 1450 50  0001 C CNN
+	2    6050 1450
+	1    0    0    -1  
+$EndComp
+Text GLabel 5250 1450 0    50   Input ~ 0
+A15
+$Comp
+L 74xx:74LS00 U3
+U 1 1 615529D3
+P 5550 1000
+F 0 "U3" H 5550 1325 50  0000 C CNN
+F 1 "74LS00" H 5550 1234 50  0000 C CNN
+F 2 "" H 5550 1000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 5550 1000 50  0001 C CNN
+	1    5550 1000
+	1    0    0    -1  
+$EndComp
+Text GLabel 5250 900  0    50   Input ~ 0
+A13
+Text GLabel 5250 1100 0    50   Input ~ 0
+A14
+Text GLabel 5850 1000 2    50   Input ~ 0
+_CS_ROM0
+Wire Wire Line
+	5750 1350 5750 1450
+Wire Wire Line
+	5750 1450 5750 1550
+Connection ~ 5750 1450
+Text GLabel 6350 1450 2    50   Input ~ 0
+_CS_ROM1
+Text GLabel 4400 1850 2    50   Input ~ 0
+_CS_ROM0
 $EndSCHEMATC
