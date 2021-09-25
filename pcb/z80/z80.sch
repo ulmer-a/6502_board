@@ -476,4 +476,173 @@ Text GLabel 6350 1450 2    50   Input ~ 0
 _CS_ROM1
 Text GLabel 4400 1850 2    50   Input ~ 0
 _CS_ROM0
+$Comp
+L Memory_RAM:CY7C199 U3
+U 1 1 617C20A6
+P 10050 2100
+F 0 "U3" H 10050 3481 50  0000 C CNN
+F 1 "CY7C199" H 10050 3390 50  0000 C CNN
+F 2 "" H 10050 2100 50  0001 C CNN
+F 3 "" H 10050 2100 50  0001 C CNN
+	1    10050 2100
+	1    0    0    -1  
+$EndComp
+Text GLabel 10750 1200 2    50   Input ~ 0
+D0
+Text GLabel 10750 1300 2    50   Input ~ 0
+D1
+Text GLabel 10750 1400 2    50   Input ~ 0
+D2
+Text GLabel 10750 1500 2    50   Input ~ 0
+D3
+Text GLabel 10750 1600 2    50   Input ~ 0
+D4
+Text GLabel 10750 1700 2    50   Input ~ 0
+D5
+Text GLabel 10750 1800 2    50   Input ~ 0
+D6
+Text GLabel 10750 1900 2    50   Input ~ 0
+D7
+Wire Wire Line
+	10650 1900 10750 1900
+Wire Wire Line
+	10750 1800 10650 1800
+Wire Wire Line
+	10650 1700 10750 1700
+Wire Wire Line
+	10750 1600 10650 1600
+Wire Wire Line
+	10650 1500 10750 1500
+Wire Wire Line
+	10750 1400 10650 1400
+Wire Wire Line
+	10650 1300 10750 1300
+Wire Wire Line
+	10750 1200 10650 1200
+Text GLabel 9350 1200 0    50   Input ~ 0
+A0
+Text GLabel 9350 1300 0    50   Input ~ 0
+A1
+Text GLabel 9350 1400 0    50   Input ~ 0
+A2
+Text GLabel 9350 1500 0    50   Input ~ 0
+A3
+Text GLabel 9350 1600 0    50   Input ~ 0
+A4
+Text GLabel 9350 1700 0    50   Input ~ 0
+A5
+Text GLabel 9350 1800 0    50   Input ~ 0
+A6
+Text GLabel 9350 1900 0    50   Input ~ 0
+A7
+Text GLabel 9350 2000 0    50   Input ~ 0
+A8
+Text GLabel 9350 2200 0    50   Input ~ 0
+A10
+Wire Wire Line
+	9450 2300 9350 2300
+Wire Wire Line
+	9350 2200 9450 2200
+Wire Wire Line
+	9350 2000 9450 2000
+Wire Wire Line
+	9450 1900 9350 1900
+Wire Wire Line
+	9350 1800 9450 1800
+Wire Wire Line
+	9450 1700 9350 1700
+Wire Wire Line
+	9450 1500 9350 1500
+Wire Wire Line
+	9350 1400 9450 1400
+Wire Wire Line
+	9450 1300 9350 1300
+Wire Wire Line
+	9350 1200 9450 1200
+Text GLabel 9350 2300 0    50   Input ~ 0
+A11
+Wire Wire Line
+	9450 2100 9350 2100
+Text GLabel 9350 2100 0    50   Input ~ 0
+A9
+Wire Wire Line
+	9350 1600 9450 1600
+Text GLabel 9350 2400 0    50   Input ~ 0
+A12
+Text GLabel 9350 2600 0    50   Input ~ 0
+A14
+Wire Wire Line
+	9350 2600 9450 2600
+Wire Wire Line
+	9350 2400 9450 2400
+Wire Wire Line
+	9450 2500 9350 2500
+Text GLabel 9350 2500 0    50   Input ~ 0
+A13
+Text GLabel 9350 2800 0    50   Input ~ 0
+A15
+Wire Wire Line
+	9350 2800 9450 2800
+Text GLabel 9350 3000 0    50   Input ~ 0
+RW_
+Wire Wire Line
+	9350 3000 9450 3000
+$Comp
+L 74xx:74LS00 U?
+U 2 1 6180BAB2
+P 7150 1000
+F 0 "U?" H 7150 1325 50  0000 C CNN
+F 1 "74LS00" H 7150 1234 50  0000 C CNN
+F 2 "" H 7150 1000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 7150 1000 50  0001 C CNN
+	2    7150 1000
+	1    0    0    -1  
+$EndComp
+Text GLabel 6700 1000 0    50   Input ~ 0
+RW_
+Wire Wire Line
+	6850 900  6800 900 
+Wire Wire Line
+	6800 900  6800 1000
+Wire Wire Line
+	6800 1100 6850 1100
+Wire Wire Line
+	6800 1000 6700 1000
+Connection ~ 6800 1000
+Wire Wire Line
+	6800 1000 6800 1100
+Text GLabel 7450 1000 2    50   Input ~ 0
+_RW
+Text GLabel 9350 2900 0    50   Input ~ 0
+_RW
+Wire Wire Line
+	9350 2900 9450 2900
+$Comp
+L power:+5V #PWR?
+U 1 1 6181DE5C
+P 10450 750
+F 0 "#PWR?" H 10450 600 50  0001 C CNN
+F 1 "+5V" H 10465 923 50  0000 C CNN
+F 2 "" H 10450 750 50  0001 C CNN
+F 3 "" H 10450 750 50  0001 C CNN
+	1    10450 750 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10050 900  10450 900 
+Wire Wire Line
+	10450 900  10450 750 
+$Comp
+L power:GND #PWR?
+U 1 1 61823FA4
+P 10050 3300
+F 0 "#PWR?" H 10050 3050 50  0001 C CNN
+F 1 "GND" H 10055 3127 50  0000 C CNN
+F 2 "" H 10050 3300 50  0001 C CNN
+F 3 "" H 10050 3300 50  0001 C CNN
+	1    10050 3300
+	1    0    0    -1  
+$EndComp
+Text Notes 9200 850  0    50   ~ 0
+32KB static RAM
 $EndSCHEMATC
