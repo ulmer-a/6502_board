@@ -100,12 +100,12 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR?
 U 1 1 614FFB8E
-P 6700 1000
-F 0 "#PWR?" H 6700 850 50  0001 C CNN
-F 1 "+5V" H 6715 1173 50  0000 C CNN
-F 2 "" H 6700 1000 50  0001 C CNN
-F 3 "" H 6700 1000 50  0001 C CNN
-	1    6700 1000
+P 6800 700
+F 0 "#PWR?" H 6800 550 50  0001 C CNN
+F 1 "+5V" H 6815 873 50  0000 C CNN
+F 2 "" H 6800 700 50  0001 C CNN
+F 3 "" H 6800 700 50  0001 C CNN
+	1    6800 700 
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -282,10 +282,8 @@ Text GLabel 8050 1550 2    50   Input ~ 0
 CLK
 Wire Wire Line
 	7950 1550 8050 1550
-Text GLabel 7050 1550 0    50   Input ~ 0
+Text GLabel 6600 1550 0    50   Input ~ 0
 _IRQ
-Wire Wire Line
-	7050 1550 7150 1550
 Wire Wire Line
 	7950 1650 8550 1650
 Wire Wire Line
@@ -305,31 +303,11 @@ NoConn ~ 7150 1650
 Text GLabel 7050 1750 0    50   Input ~ 0
 _NMI
 Wire Wire Line
-	7150 1950 6700 1950
+	7150 1950 6800 1950
 Wire Wire Line
 	7050 1750 7150 1750
 NoConn ~ 7950 1350
 NoConn ~ 7150 1450
-Wire Wire Line
-	6700 1950 6700 1050
-$Comp
-L Device:R R1
-U 1 1 615AE67A
-P 6800 1200
-F 0 "R1" H 6870 1246 50  0000 L CNN
-F 1 "R" H 6870 1155 50  0000 L CNN
-F 2 "" V 6730 1200 50  0001 C CNN
-F 3 "~" H 6800 1200 50  0001 C CNN
-	1    6800 1200
-	1    0    0    -1  
-$EndComp
-Connection ~ 6700 1050
-Wire Wire Line
-	6700 1050 6700 1000
-Wire Wire Line
-	6800 1350 7150 1350
-Wire Wire Line
-	6800 1050 6700 1050
 Wire Wire Line
 	7950 1450 8550 1450
 Connection ~ 8550 1450
@@ -357,7 +335,7 @@ L chips:W65C51 U6
 U 1 1 61865D71
 P 5200 900
 F 0 "U6" H 5200 965 50  0000 C CNN
-F 1 "W65C51" H 5200 874 50  0000 C CNN
+F 1 "W65C51N" H 5200 874 50  0000 C CNN
 F 2 "" H 5200 900 50  0001 C CNN
 F 3 "" H 5200 900 50  0001 C CNN
 	1    5200 900 
@@ -1189,7 +1167,7 @@ L chips:W65C22 U?
 U 1 1 61706C19
 P 2950 1900
 F 0 "U?" H 2950 3065 50  0000 C CNN
-F 1 "W65C22" H 2950 2974 50  0000 C CNN
+F 1 "W65C22N" H 2950 2974 50  0000 C CNN
 F 2 "" H 2950 3000 50  0001 C CNN
 F 3 "" H 2950 3000 50  0001 C CNN
 	1    2950 1900
@@ -1198,7 +1176,7 @@ $EndComp
 Text GLabel 3450 2800 2    50   Input ~ 0
 RW_
 Text GLabel 3450 2900 2    50   Input ~ 0
-_IRQ_VIA
+_IRQ
 Text GLabel 3450 2500 2    50   Input ~ 0
 CLK
 Text GLabel 3450 1700 2    50   Input ~ 0
@@ -1606,4 +1584,50 @@ F 3 "~" H 10700 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 10550 3300
+$Comp
+L Device:R_Small R?
+U 1 1 6247056E
+P 6900 900
+F 0 "R?" H 6959 946 50  0000 L CNN
+F 1 "R_Small" H 6959 855 50  0000 L CNN
+F 2 "" H 6900 900 50  0001 C CNN
+F 3 "~" H 6900 900 50  0001 C CNN
+	1    6900 900 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 750  6900 800 
+Wire Wire Line
+	6800 700  6800 750 
+Wire Wire Line
+	6900 750  6800 750 
+Wire Wire Line
+	6700 750  6700 800 
+Wire Wire Line
+	6700 750  6800 750 
+Connection ~ 6800 750 
+Wire Wire Line
+	6900 1000 6900 1350
+Wire Wire Line
+	6900 1350 7150 1350
+Wire Wire Line
+	6800 750  6800 1950
+Wire Wire Line
+	6700 1000 6700 1550
+Wire Wire Line
+	6700 1550 7150 1550
+Wire Wire Line
+	6700 1550 6600 1550
+Connection ~ 6700 1550
+$Comp
+L Device:R_Small R?
+U 1 1 62433B00
+P 6700 900
+F 0 "R?" H 6759 946 50  0000 L CNN
+F 1 "R_Small" H 6759 855 50  0000 L CNN
+F 2 "" H 6700 900 50  0001 C CNN
+F 3 "~" H 6700 900 50  0001 C CNN
+	1    6700 900 
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC
