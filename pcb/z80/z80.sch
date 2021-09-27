@@ -1410,21 +1410,17 @@ F 3 "" H 4300 1800 50  0001 C CNN
 	1    4300 1800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4300 1450 4350 1450
 $Comp
 L Device:Crystal_Small Y?
 U 1 1 634B8AAA
-P 4450 1450
-F 0 "Y?" H 4750 1350 50  0000 R CNN
-F 1 "1.8432M" H 4600 1350 50  0000 R CNN
-F 2 "" H 4450 1450 50  0001 C CNN
-F 3 "~" H 4450 1450 50  0001 C CNN
-	1    4450 1450
-	-1   0    0    1   
+P 4550 1450
+F 0 "Y?" V 4350 1200 50  0000 R CNN
+F 1 "1.8432M" V 4350 1550 50  0000 R CNN
+F 2 "" H 4550 1450 50  0001 C CNN
+F 3 "~" H 4550 1450 50  0001 C CNN
+	1    4550 1450
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	4300 1550 4300 1450
 $Comp
 L Device:C_Small C?
 U 1 1 635C3856
@@ -1437,25 +1433,12 @@ F 3 "~" H 4300 1650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 4300 1750
-Connection ~ 4300 1550
 Text GLabel 5200 1350 0    50   Input ~ 0
 RXCLK
 Wire Wire Line
 	5200 1350 5300 1350
 Wire Wire Line
-	4550 1450 5300 1450
-Wire Wire Line
-	4300 1550 5300 1550
-Wire Wire Line
 	4300 1750 5300 1750
-Wire Notes Line
-	4100 1200 4650 1200
-Wire Notes Line
-	4650 1200 4650 1800
-Wire Notes Line
-	4650 1800 4100 1800
-Wire Notes Line
-	4100 1800 4100 1200
 $Comp
 L Connector_Generic:Conn_01x04 J?
 U 1 1 637D2510
@@ -1923,4 +1906,25 @@ F 3 "" H 5750 5750 50  0001 C CNN
 $EndComp
 Text Notes 1450 5750 0    50   ~ 0
 Make sure _WE is only active when CLK is high
+Wire Wire Line
+	4550 1550 5300 1550
+Wire Wire Line
+	5300 1450 4750 1450
+Wire Wire Line
+	4750 1450 4750 1350
+Wire Wire Line
+	4750 1350 4550 1350
+Wire Wire Line
+	4550 1350 4300 1350
+Connection ~ 4550 1350
+Wire Wire Line
+	4300 1350 4300 1550
+Wire Notes Line
+	4700 1150 4700 1800
+Wire Notes Line
+	4100 1150 4100 1800
+Wire Notes Line
+	4100 1800 4700 1800
+Wire Notes Line
+	4100 1150 4700 1150
 $EndSCHEMATC
