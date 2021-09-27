@@ -975,13 +975,13 @@ Text GLabel 1600 1200 2    50   Input ~ 0
 LED2
 Text GLabel 1600 1600 2    50   Input ~ 0
 LED3
-Text GLabel 2450 2300 0    50   Input ~ 0
+Text GLabel 2400 1900 0    50   Input ~ 0
 LED1
-Text GLabel 2450 2400 0    50   Input ~ 0
+Text GLabel 2400 2000 0    50   Input ~ 0
 LED2
-Text GLabel 2450 2500 0    50   Input ~ 0
+Text GLabel 2400 2100 0    50   Input ~ 0
 LED3
-Text GLabel 2450 2600 0    50   Input ~ 0
+Text GLabel 2400 2200 0    50   Input ~ 0
 _SW_RESET
 Wire Wire Line
 	2400 2100 2450 2100
@@ -1016,16 +1016,8 @@ Text GLabel 2400 1700 0    50   Input ~ 0
 IO9
 Text GLabel 2400 1800 0    50   Input ~ 0
 IO10
-Text GLabel 2400 1900 0    50   Input ~ 0
-IO11
-Text GLabel 2400 2200 0    50   Input ~ 0
-IO14
 Text GLabel 2400 2700 0    50   Input ~ 0
 IO15
-Text GLabel 2400 2000 0    50   Input ~ 0
-IO12
-Text GLabel 2400 2100 0    50   Input ~ 0
-IO13
 Wire Wire Line
 	3250 1000 3350 1000
 Wire Wire Line
@@ -1058,83 +1050,83 @@ Wire Wire Line
 	2400 2700 2450 2700
 Wire Wire Line
 	2450 2800 2400 2800
-Text GLabel 1100 2100 0    50   Input ~ 0
+Text GLabel 850  2100 0    50   Input ~ 0
 IO1
-Text GLabel 1600 2100 2    50   Input ~ 0
+Text GLabel 1350 2100 2    50   Input ~ 0
 IO2
-Text GLabel 1100 2200 0    50   Input ~ 0
+Text GLabel 850  2200 0    50   Input ~ 0
 IO3
-Text GLabel 1600 2200 2    50   Input ~ 0
+Text GLabel 1350 2200 2    50   Input ~ 0
 IO4
-Text GLabel 1600 2300 2    50   Input ~ 0
+Text GLabel 1350 2300 2    50   Input ~ 0
 IO6
-Text GLabel 1100 2400 0    50   Input ~ 0
+Text GLabel 850  2400 0    50   Input ~ 0
 IO7
-Text GLabel 1600 2400 2    50   Input ~ 0
+Text GLabel 1350 2400 2    50   Input ~ 0
 IO8
-Text GLabel 1100 2500 0    50   Input ~ 0
+Text GLabel 850  2500 0    50   Input ~ 0
 IO9
-Text GLabel 1100 2300 0    50   Input ~ 0
+Text GLabel 850  2300 0    50   Input ~ 0
 IO5
-Text GLabel 1600 2500 2    50   Input ~ 0
+Text GLabel 1350 2500 2    50   Input ~ 0
 IO10
-Text GLabel 1100 2600 0    50   Input ~ 0
+Text GLabel 850  2600 0    50   Input ~ 0
 IO11
-Text GLabel 1600 2600 2    50   Input ~ 0
+Text GLabel 1350 2600 2    50   Input ~ 0
 IO12
-Text GLabel 1100 2700 0    50   Input ~ 0
+Text GLabel 850  2700 0    50   Input ~ 0
 IO13
-Text GLabel 1600 2700 2    50   Input ~ 0
+Text GLabel 1350 2700 2    50   Input ~ 0
 IO14
-Text GLabel 1100 2800 0    50   Input ~ 0
+Text GLabel 850  2800 0    50   Input ~ 0
 IO15
 Wire Wire Line
 	3250 1100 3350 1100
 Text GLabel 2400 2800 0    50   Input ~ 0
 IO16
-Text GLabel 1600 2800 2    50   Input ~ 0
+Text GLabel 1350 2800 2    50   Input ~ 0
 IO16
 $Comp
 L Connector_Generic:Conn_02x09_Odd_Even J?
 U 1 1 622DCC83
-P 1300 2500
-F 0 "J?" H 1350 3117 50  0000 C CNN
-F 1 "IO Pinheader" H 1350 3026 50  0000 C CNN
-F 2 "" H 1300 2500 50  0001 C CNN
-F 3 "~" H 1300 2500 50  0001 C CNN
-	1    1300 2500
+P 1050 2500
+F 0 "J?" H 1100 3117 50  0000 C CNN
+F 1 "IO Pinheader" H 1100 3026 50  0000 C CNN
+F 2 "" H 1050 2500 50  0001 C CNN
+F 3 "~" H 1050 2500 50  0001 C CNN
+	1    1050 2500
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 622DF6C7
-P 1050 2950
-F 0 "#PWR?" H 1050 2700 50  0001 C CNN
-F 1 "GND" H 1055 2777 50  0000 C CNN
-F 2 "" H 1050 2950 50  0001 C CNN
-F 3 "" H 1050 2950 50  0001 C CNN
-	1    1050 2950
+P 800 2950
+F 0 "#PWR?" H 800 2700 50  0001 C CNN
+F 1 "GND" H 805 2777 50  0000 C CNN
+F 2 "" H 800 2950 50  0001 C CNN
+F 3 "" H 800 2950 50  0001 C CNN
+	1    800  2950
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 622F941C
-P 1650 2950
-F 0 "#PWR?" H 1650 2800 50  0001 C CNN
-F 1 "+5V" H 1665 3123 50  0000 C CNN
-F 2 "" H 1650 2950 50  0001 C CNN
-F 3 "" H 1650 2950 50  0001 C CNN
-	1    1650 2950
+P 1400 2950
+F 0 "#PWR?" H 1400 2800 50  0001 C CNN
+F 1 "+5V" H 1415 3123 50  0000 C CNN
+F 2 "" H 1400 2950 50  0001 C CNN
+F 3 "" H 1400 2950 50  0001 C CNN
+	1    1400 2950
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1600 2900 1650 2900
+	1350 2900 1400 2900
 Wire Wire Line
-	1650 2900 1650 2950
+	1400 2900 1400 2950
 Wire Wire Line
-	1100 2900 1050 2900
+	850  2900 800  2900
 Wire Wire Line
-	1050 2900 1050 2950
+	800  2900 800  2950
 Wire Notes Line
 	550  550  3900 550 
 Text Notes 2650 3200 0    50   ~ 0
@@ -1927,4 +1919,40 @@ Wire Notes Line
 	4100 1800 4700 1800
 Wire Notes Line
 	4100 1150 4700 1150
+Text GLabel 1800 2650 3    50   Input ~ 0
+RXCLK
+$Comp
+L Device:Jumper_NC_Small JP?
+U 1 1 6523EB21
+P 1900 2500
+F 0 "JP?" H 1900 2315 50  0000 C CNN
+F 1 "RXCLK feed" H 1900 2406 50  0000 C CNN
+F 2 "" H 1900 2500 50  0001 C CNN
+F 3 "~" H 1900 2500 50  0001 C CNN
+	1    1900 2500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1800 2500 1800 2650
+Wire Wire Line
+	2000 2500 2050 2500
+Text GLabel 2400 2400 0    50   Input ~ 0
+IO12
+Text GLabel 2400 2300 0    50   Input ~ 0
+IO11
+Wire Wire Line
+	2400 2300 2450 2300
+Wire Wire Line
+	2450 2400 2400 2400
+Text GLabel 2400 2600 0    50   Input ~ 0
+IO14
+Wire Wire Line
+	2400 2600 2450 2600
+Text GLabel 2050 2650 3    50   Input ~ 0
+IO13
+Wire Wire Line
+	2050 2650 2050 2500
+Connection ~ 2050 2500
+Wire Wire Line
+	2050 2500 2450 2500
 $EndSCHEMATC
