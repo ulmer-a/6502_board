@@ -1837,9 +1837,7 @@ CLK
 Wire Wire Line
 	2300 5550 2400 5550
 Text GLabel 3150 5450 2    50   Input ~ 0
-WE_
-Wire Wire Line
-	3000 5450 3150 5450
+_WE
 Wire Wire Line
 	2250 5350 2250 5100
 Wire Wire Line
@@ -1955,4 +1953,8 @@ Wire Wire Line
 Connection ~ 2050 2500
 Wire Wire Line
 	2050 2500 2450 2500
+NoConn ~ 8150 5650
+NoConn ~ 8150 5750
+Wire Wire Line
+	3000 5450 3150 5450
 $EndSCHEMATC
