@@ -1196,4 +1196,117 @@ Wire Wire Line
 Wire Wire Line
 	10950 2700 10950 2600
 NoConn ~ 10850 3100
+$Comp
+L chips:W65C22 U?
+U 1 1 61706C19
+P 3850 1800
+F 0 "U?" H 3850 2965 50  0000 C CNN
+F 1 "W65C22" H 3850 2874 50  0000 C CNN
+F 2 "" H 3850 2900 50  0001 C CNN
+F 3 "" H 3850 2900 50  0001 C CNN
+	1    3850 1800
+	1    0    0    -1  
+$EndComp
+Text GLabel 4350 2700 2    50   Input ~ 0
+RW_
+Text GLabel 4350 2800 2    50   Input ~ 0
+_IRQ_VIA
+Text GLabel 4350 2400 2    50   Input ~ 0
+CLK
+Text GLabel 4350 1600 2    50   Input ~ 0
+D0
+Text GLabel 4350 1700 2    50   Input ~ 0
+D1
+Text GLabel 4350 1800 2    50   Input ~ 0
+D2
+Text GLabel 4350 1900 2    50   Input ~ 0
+D3
+Text GLabel 4350 2000 2    50   Input ~ 0
+D4
+Text GLabel 4350 2100 2    50   Input ~ 0
+D5
+Text GLabel 4350 2200 2    50   Input ~ 0
+D6
+Text GLabel 4350 2300 2    50   Input ~ 0
+D7
+Wire Wire Line
+	4250 2300 4350 2300
+Wire Wire Line
+	4350 2200 4250 2200
+Wire Wire Line
+	4250 2100 4350 2100
+Wire Wire Line
+	4350 2000 4250 2000
+Wire Wire Line
+	4250 1900 4350 1900
+Wire Wire Line
+	4350 1800 4250 1800
+Wire Wire Line
+	4250 1700 4350 1700
+Wire Wire Line
+	4350 1600 4250 1600
+Wire Wire Line
+	4350 1100 4250 1100
+Wire Wire Line
+	4250 1200 4350 1200
+Wire Wire Line
+	4350 1300 4250 1300
+Wire Wire Line
+	4250 1400 4350 1400
+Text GLabel 4350 1400 2    50   Input ~ 0
+A3
+Text GLabel 4350 1300 2    50   Input ~ 0
+A2
+Text GLabel 4350 1200 2    50   Input ~ 0
+A1
+Text GLabel 4350 1100 2    50   Input ~ 0
+A0
+Text GLabel 4350 1500 2    50   Input ~ 0
+_RESET
+Wire Wire Line
+	4250 1500 4350 1500
+Wire Wire Line
+	4250 2400 4350 2400
+Wire Wire Line
+	4250 2700 4350 2700
+Wire Wire Line
+	4250 2800 4350 2800
+$Comp
+L power:+5V #PWR?
+U 1 1 6178C0AC
+P 3350 800
+F 0 "#PWR?" H 3350 650 50  0001 C CNN
+F 1 "+5V" H 3365 973 50  0000 C CNN
+F 2 "" H 3350 800 50  0001 C CNN
+F 3 "" H 3350 800 50  0001 C CNN
+	1    3350 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 800  3350 900 
+Wire Wire Line
+	3350 900  3450 900 
+Wire Wire Line
+	3450 2800 3350 2800
+Wire Wire Line
+	3350 2800 3350 2900
+$Comp
+L power:GND #PWR?
+U 1 1 617AD6DE
+P 3350 2900
+F 0 "#PWR?" H 3350 2650 50  0001 C CNN
+F 1 "GND" H 3355 2727 50  0000 C CNN
+F 2 "" H 3350 2900 50  0001 C CNN
+F 3 "" H 3350 2900 50  0001 C CNN
+	1    3350 2900
+	1    0    0    -1  
+$EndComp
+Text GLabel 4350 2600 2    50   Input ~ 0
+_IO_PCOND
+Wire Wire Line
+	4250 2600 4350 2600
+Text GLabel 4350 2500 2    50   Input ~ 0
+CS_VIA
+Wire Wire Line
+	4250 2500 4350 2500
 $EndSCHEMATC
