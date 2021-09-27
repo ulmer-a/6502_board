@@ -434,7 +434,7 @@ Wire Wire Line
 Wire Wire Line
 	6000 2350 6100 2350
 Text Notes 4700 800  0    50   ~ 0
-WDC 65C51 UART\nmapped at 0xc000
+WDC 65C51 UART\nmapped at 0xffe0
 NoConn ~ 7600 1400
 Text GLabel 5200 1250 0    50   Input ~ 0
 _RESET
@@ -1130,7 +1130,7 @@ Wire Wire Line
 Wire Notes Line
 	550  550  3900 550 
 Text Notes 2650 3200 0    50   ~ 0
-65C22 IO Interface chip
+65C22 IO Interface chip\nmapped at 0xfff0
 $Comp
 L Connector:USB_B_Mini J3
 U 1 1 62401CD0
