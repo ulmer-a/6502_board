@@ -6,15 +6,15 @@ the firmware/monitor program.
 ## Specifications
 ### CPU and memory
 * W65C02 8-bit CPU
-* 32KB of on-board SRAM (`0x0000` to `0x7fff`)
-* 8KB of on-board EEPROM (`0xe000` to `0xffff`)
+* 32KB of on-board SRAM
+* 8KB of on-board EEPROM
 
 ### Onboard I/O
 * W65C51N ACIA UART chip (max baud rate 19200)
 * W65C22N I/O chip
- - 12 general purpose I/O pins
- - serial shift register
- - software reset bit (can be disabled)
+    * 12 general purpose I/O pins
+    * serial shift register
+    * software reset bit (can be disabled)
 * Software reset
 
 ### Ports and headers
@@ -37,9 +37,9 @@ so that a hardware debugger may be implemented
 ## Special registers
 
 ### Software RESET
-Setting PB3
 The whole board can be reset by writing a zero into bit 3
 of the VIA's port B, when data direction is set to output.
+Note that any RAM will not be cleared.
 
 Example code:
 ```
