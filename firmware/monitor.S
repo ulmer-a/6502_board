@@ -4,32 +4,46 @@
 // Addresses and definitions are available in
 // other files.
 
+// Zeropage variables
+zp s_brkpointAddr    = $10
+zp s_brkpointAddrLO  = $10
+zp s_brkpointAddrHI  = $11
+zp s_brkpointOpcode  = $11
+zp s_savedA          = $20
+zp s_savedX          = $21
+zp s_savedY          = $22
+zp s_savedP          = $23
+
+.org $e000
+
 _start:
     jsr uart_init
 
     // what next?
+    stp
 
 _nmi:
     // ignore
     rti
 
 _brk:
-    // handle breakpoint, etc.?
+    jsr check_brkpoint
     rti
 
 uart_irq0:
   jmp uart_irq
 
 _brk_irq:
-    pha
-    phx
-    phy
+    sta s_savedA
+    stx s_savedX
+    sty s_savedY
 
     // check if the interrupt is a BRK
     // or a true hardware interrupt
-    tsx
-    lda $0104, x  // get the saved status register
+    pla
+    sta s_savedP
     bbs4 _brk
+    pha
 
     // check if the UART caused the interrupt
     lda UART_STAT
