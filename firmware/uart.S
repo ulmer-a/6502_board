@@ -10,8 +10,7 @@ UART_CMD  = $dfe2
 UART_CTRL = $dfe3
 
 
-//.section text
-.org $f000
+.section text
 
 uart_init:            // uart_init(): reset and init the UART
     stz UART_STAT     // writing status register performs a reset

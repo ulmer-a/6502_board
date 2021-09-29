@@ -5,16 +5,16 @@
 // other files.
 
 // Zeropage variables
-zp s_brkpointAddr    = $10
-zp s_brkpointAddrLO  = $10
-zp s_brkpointAddrHI  = $11
-zp s_brkpointOpcode  = $11
-zp s_savedA          = $20
-zp s_savedX          = $21
-zp s_savedY          = $22
-zp s_savedP          = $23
+global zp s_brkpointAddr    = $10
+global zp s_brkpointAddrLO  = $10
+global zp s_brkpointAddrHI  = $11
+global zp s_brkpointOpcode  = $11
+global zp s_savedA          = $20
+global zp s_savedX          = $21
+global zp s_savedY          = $22
+global zp s_savedP          = $23
 
-.org $e000
+.section text
 
 _start:
     jsr uart_init

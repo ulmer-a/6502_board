@@ -3,7 +3,7 @@
 //
 // Breakpoint handling
 
-.org $e800
+.section text
 
 // redeclaring the variables "extern zeropage"
 // will produce smaller code and is even necessary

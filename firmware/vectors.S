@@ -21,7 +21,7 @@ VIA_PCR   = $dffc
 VIA_IFR   = $dffd
 VIA_IER   = $dffe
 
-.org $fff0
+.section text
 
 // Software reset: setting bit 3 in DDRB and
 // clearing bit 3 in PORTB causes the board to reset 
@@ -31,7 +31,7 @@ sw_reset:
   trb VIA_PORTB
   stp
 
-.org $fffa
+.section vectors
 .word _nmi
 .word _start
 .word _brk_irq
