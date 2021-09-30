@@ -81,7 +81,7 @@ NoConn ~ 10650 1100
 NoConn ~ 10050 1700
 NoConn ~ 10050 1600
 Text GLabel 10800 1500 2    50   Input ~ 0
-HSYNC
+_HSYNC
 Wire Wire Line
 	10650 1500 10800 1500
 $Comp
@@ -355,23 +355,23 @@ $EndComp
 $Comp
 L 74xx:74LS04 U?
 U 5 1 6159EE06
-P 5450 6850
-F 0 "U?" H 5450 7167 50  0000 C CNN
-F 1 "74LS04" H 5450 7076 50  0000 C CNN
-F 2 "" H 5450 6850 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 5450 6850 50  0001 C CNN
-	5    5450 6850
+P 1300 5950
+F 0 "U?" H 1300 6267 50  0000 C CNN
+F 1 "74LS04" H 1300 6176 50  0000 C CNN
+F 2 "" H 1300 5950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 1300 5950 50  0001 C CNN
+	5    1300 5950
 	1    0    0    -1  
 $EndComp
 $Comp
 L 74xx:74LS04 U?
 U 6 1 6159F80E
-P 5450 7350
-F 0 "U?" H 5450 7667 50  0000 C CNN
-F 1 "74LS04" H 5450 7576 50  0000 C CNN
-F 2 "" H 5450 7350 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 5450 7350 50  0001 C CNN
-	6    5450 7350
+P 1300 6650
+F 0 "U?" H 1300 6967 50  0000 C CNN
+F 1 "74LS04" H 1300 6876 50  0000 C CNN
+F 2 "" H 1300 6650 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 1300 6650 50  0001 C CNN
+	6    1300 6650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -407,12 +407,12 @@ $EndComp
 $Comp
 L 74xx:74LS30 U?
 U 2 1 615D1EF7
-P 4700 7050
-F 0 "U?" H 4930 7096 50  0000 L CNN
-F 1 "74LS30" H 4930 7005 50  0000 L CNN
-F 2 "" H 4700 7050 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS30" H 4700 7050 50  0001 C CNN
-	2    4700 7050
+P 5800 7100
+F 0 "U?" H 6030 7146 50  0000 L CNN
+F 1 "74LS30" H 6030 7055 50  0000 L CNN
+F 2 "" H 5800 7100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS30" H 5800 7100 50  0001 C CNN
+	2    5800 7100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -422,7 +422,7 @@ Wire Wire Line
 Wire Wire Line
 	1600 3750 1600 3300
 Wire Wire Line
-	2200 4350 1600 4350
+	2200 4350 1650 4350
 Wire Wire Line
 	2200 4450 1600 4450
 Wire Wire Line
@@ -496,8 +496,6 @@ Wire Wire Line
 	1900 4850 2200 4850
 Connection ~ 1900 3750
 Wire Wire Line
-	1900 3750 1600 3750
-Wire Wire Line
 	1850 3850 1850 4950
 Wire Wire Line
 	1850 4950 2200 4950
@@ -531,7 +529,7 @@ Wire Wire Line
 	3800 4800 3950 4800
 Connection ~ 3800 4800
 Text GLabel 3950 4800 2    50   Input ~ 0
-HSYNC
+_HSYNC
 Text GLabel 3850 1350 2    50   Input ~ 0
 H4
 Text GLabel 3850 1450 2    50   Input ~ 0
@@ -547,4 +545,74 @@ H9
 NoConn ~ 5450 1550
 NoConn ~ 5450 1650
 NoConn ~ 5450 1850
+Text Notes 3150 5150 0    50   ~ 0
+SR Latch for HSYNC\n
+$Comp
+L 74xx:74LS30 U?
+U 1 1 6165B8AF
+P 2500 6250
+F 0 "U?" H 2500 6775 50  0000 C CNN
+F 1 "74LS30" H 2500 6684 50  0000 C CNN
+F 2 "" H 2500 6250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS30" H 2500 6250 50  0001 C CNN
+	1    2500 6250
+	1    0    0    -1  
+$EndComp
+Text GLabel 1000 5950 0    50   Input ~ 0
+H8
+Text GLabel 2200 6050 0    50   Input ~ 0
+H9
+Connection ~ 1650 4350
+Wire Wire Line
+	1650 4350 1600 4350
+Wire Wire Line
+	1600 5950 2200 5950
+Text GLabel 1000 6650 0    50   Input ~ 0
+H7
+Text GLabel 2200 6350 0    50   Input ~ 0
+H2
+Wire Wire Line
+	1900 4850 1900 6150
+Connection ~ 1900 4850
+Wire Wire Line
+	1900 6150 2200 6150
+Wire Wire Line
+	1600 3750 1900 3750
+Wire Wire Line
+	1650 6250 2200 6250
+Wire Wire Line
+	1650 4350 1650 6250
+Text GLabel 2200 6450 0    50   Input ~ 0
+H4
+Wire Wire Line
+	1600 6650 2200 6650
+$Comp
+L 74xx:74LS04 U?
+U 1 1 616CF398
+P 1300 7250
+F 0 "U?" H 1300 7567 50  0000 C CNN
+F 1 "74LS04" H 1300 7476 50  0000 C CNN
+F 2 "" H 1300 7250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 1300 7250 50  0001 C CNN
+	1    1300 7250
+	1    0    0    -1  
+$EndComp
+Text GLabel 1000 7250 0    50   Input ~ 0
+H5
+Wire Wire Line
+	1600 7250 1650 7250
+Wire Wire Line
+	1650 7250 1650 6550
+Wire Wire Line
+	1650 6550 2200 6550
+Text GLabel 2800 6250 2    50   Input ~ 0
+_LINE_RST
+Text GLabel 6700 1750 0    50   Input ~ 0
+ROMY0
+Text GLabel 6700 1650 0    50   Input ~ 0
+ROMY1
+Text GLabel 6700 1550 0    50   Input ~ 0
+ROMY2
+Text GLabel 6700 1450 0    50   Input ~ 0
+ROMY3
 $EndSCHEMATC
