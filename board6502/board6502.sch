@@ -1884,7 +1884,7 @@ $EndComp
 Text Notes 1450 5750 0    50   ~ 0
 Make sure _WE is only active when CLK is high
 Wire Wire Line
-	4550 1550 5300 1550
+	4550 1550 5050 1550
 Wire Wire Line
 	5300 1450 4750 1450
 Wire Wire Line
@@ -1971,4 +1971,27 @@ Wire Notes Line
 	3950 3050 3950 4650
 Wire Notes Line
 	6700 3050 6700 4650
+$Comp
+L Device:R_Small R?
+U 1 1 61609577
+P 4900 1500
+F 0 "R?" V 5000 1550 50  0000 C CNN
+F 1 "1M" V 4800 1500 50  0000 C CNN
+F 2 "" H 4900 1500 50  0001 C CNN
+F 3 "~" H 4900 1500 50  0001 C CNN
+	1    4900 1500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5000 1500 5050 1500
+Wire Wire Line
+	4800 1500 4750 1500
+Wire Wire Line
+	4750 1500 4750 1450
+Connection ~ 4750 1450
+Wire Wire Line
+	5050 1500 5050 1550
+Connection ~ 5050 1550
+Wire Wire Line
+	5050 1550 5300 1550
 $EndSCHEMATC
