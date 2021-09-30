@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name chips)(type Legacy)(uri /home/alex/Projects/board6502/board6502/chips.lib)(options "")(descr ""))
+)
