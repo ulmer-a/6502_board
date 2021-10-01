@@ -249,8 +249,8 @@ Wire Wire Line
 	9750 4550 9700 4550
 Wire Wire Line
 	9700 4450 9750 4450
-Text Notes 10100 5950 0    50   ~ 0
-8KB EEPROM\nmapped at 0xe000
+Text Notes 10050 6100 0    50   ~ 0
+8KB EEPROM\nmapped at 0xe000\nread access time 150ns
 $Comp
 L chips:W65C02 U7
 U 1 1 61507660
@@ -421,7 +421,7 @@ RW_
 Wire Wire Line
 	5200 2350 5300 2350
 Text GLabel 5200 1150 0    50   Input ~ 0
-_IO_PCOND
+_IO_CS
 Wire Wire Line
 	5200 1150 5300 1150
 Text GLabel 5200 1050 0    50   Input ~ 0
@@ -775,7 +775,7 @@ F 3 "" H 2350 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 3350 2700 2    50   Input ~ 0
-_IO_PCOND
+_IO_CS
 Wire Wire Line
 	3250 2700 3350 2700
 Text GLabel 3350 2600 2    50   Input ~ 0
@@ -889,17 +889,6 @@ Wire Wire Line
 	2400 2100 2450 2100
 Wire Wire Line
 	2400 2200 2450 2200
-$Comp
-L power:GND #PWR01
-U 1 1 619A60E2
-P 750 2000
-F 0 "#PWR01" H 750 1750 50  0001 C CNN
-F 1 "GND" H 755 1827 50  0000 C CNN
-F 2 "" H 750 2000 50  0001 C CNN
-F 3 "" H 750 2000 50  0001 C CNN
-	1    750  2000
-	1    0    0    -1  
-$EndComp
 Text GLabel 3350 1100 2    50   Input ~ 0
 IO2
 Text GLabel 2400 1100 0    50   Input ~ 0
@@ -1579,7 +1568,7 @@ Wire Wire Line
 Wire Wire Line
 	4150 6800 5700 6800
 Text GLabel 6300 6700 2    50   Input ~ 0
-_IO_PCOND
+_IO_CS
 $Comp
 L 74xx:74LS04 U3
 U 5 1 647E90D0
@@ -2133,7 +2122,6 @@ Wire Wire Line
 	1150 2000 1350 2000
 Wire Wire Line
 	750  1650 750  2000
-Connection ~ 750  2000
 Wire Wire Line
 	1700 950  1700 900 
 Wire Wire Line
@@ -2149,79 +2137,79 @@ F 3 "" H 1700 900 50  0001 C CNN
 	1    1700 900 
 	1    0    0    -1  
 $EndComp
-Text GLabel 7050 3900 0    50   Input ~ 0
+Text GLabel 7050 3950 0    50   Input ~ 0
 IO1
-Text GLabel 7550 3900 2    50   Input ~ 0
+Text GLabel 7550 3950 2    50   Input ~ 0
 IO2
-Text GLabel 7050 4000 0    50   Input ~ 0
+Text GLabel 7050 4050 0    50   Input ~ 0
 IO3
-Text GLabel 7550 4000 2    50   Input ~ 0
+Text GLabel 7550 4050 2    50   Input ~ 0
 IO4
-Text GLabel 7550 4100 2    50   Input ~ 0
+Text GLabel 7550 4150 2    50   Input ~ 0
 IO6
-Text GLabel 7050 4200 0    50   Input ~ 0
+Text GLabel 7050 4250 0    50   Input ~ 0
 IO7
-Text GLabel 7550 4200 2    50   Input ~ 0
+Text GLabel 7550 4250 2    50   Input ~ 0
 IO8
-Text GLabel 7050 4300 0    50   Input ~ 0
+Text GLabel 7050 4350 0    50   Input ~ 0
 IO9
-Text GLabel 7050 4100 0    50   Input ~ 0
+Text GLabel 7050 4150 0    50   Input ~ 0
 IO5
-Text GLabel 7550 4300 2    50   Input ~ 0
+Text GLabel 7550 4350 2    50   Input ~ 0
 IO10
-Text GLabel 7050 4400 0    50   Input ~ 0
+Text GLabel 7050 4450 0    50   Input ~ 0
 IO11
-Text GLabel 7550 4400 2    50   Input ~ 0
+Text GLabel 7550 4450 2    50   Input ~ 0
 IO12
-Text GLabel 7050 4500 0    50   Input ~ 0
+Text GLabel 7050 4550 0    50   Input ~ 0
 IO13
-Text GLabel 7550 4500 2    50   Input ~ 0
+Text GLabel 7550 4550 2    50   Input ~ 0
 IO14
-Text GLabel 7050 4600 0    50   Input ~ 0
+Text GLabel 7050 4650 0    50   Input ~ 0
 IO15
-Text GLabel 7550 4600 2    50   Input ~ 0
+Text GLabel 7550 4650 2    50   Input ~ 0
 IO16
 $Comp
 L Connector_Generic:Conn_02x09_Odd_Even J1
 U 1 1 63164F60
-P 7250 4300
-F 0 "J1" H 7300 4917 50  0000 C CNN
-F 1 "IO Pinheader" H 7300 4826 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Vertical" H 7250 4300 50  0001 C CNN
-F 3 "~" H 7250 4300 50  0001 C CNN
-	1    7250 4300
+P 7250 4350
+F 0 "J1" H 7300 4967 50  0000 C CNN
+F 1 "IO Pinheader" H 7300 4876 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Vertical" H 7250 4350 50  0001 C CNN
+F 3 "~" H 7250 4350 50  0001 C CNN
+	1    7250 4350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0104
 U 1 1 63164F66
-P 7000 4750
-F 0 "#PWR0104" H 7000 4500 50  0001 C CNN
-F 1 "GND" H 7005 4577 50  0000 C CNN
-F 2 "" H 7000 4750 50  0001 C CNN
-F 3 "" H 7000 4750 50  0001 C CNN
-	1    7000 4750
+P 7000 4800
+F 0 "#PWR0104" H 7000 4550 50  0001 C CNN
+F 1 "GND" H 7005 4627 50  0000 C CNN
+F 2 "" H 7000 4800 50  0001 C CNN
+F 3 "" H 7000 4800 50  0001 C CNN
+	1    7000 4800
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR0105
 U 1 1 63164F6C
-P 7600 4750
-F 0 "#PWR0105" H 7600 4600 50  0001 C CNN
-F 1 "+5V" H 7615 4923 50  0000 C CNN
-F 2 "" H 7600 4750 50  0001 C CNN
-F 3 "" H 7600 4750 50  0001 C CNN
-	1    7600 4750
+P 7600 4800
+F 0 "#PWR0105" H 7600 4650 50  0001 C CNN
+F 1 "+5V" H 7615 4973 50  0000 C CNN
+F 2 "" H 7600 4800 50  0001 C CNN
+F 3 "" H 7600 4800 50  0001 C CNN
+	1    7600 4800
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7550 4700 7600 4700
+	7550 4750 7600 4750
 Wire Wire Line
-	7600 4700 7600 4750
+	7600 4750 7600 4800
 Wire Wire Line
-	7050 4700 7000 4700
+	7050 4750 7000 4750
 Wire Wire Line
-	7000 4700 7000 4750
+	7000 4750 7000 4800
 Wire Notes Line
 	6750 5100 7750 5100
 Wire Notes Line
@@ -2233,12 +2221,12 @@ Wire Wire Line
 Wire Wire Line
 	1600 2650 2050 2650
 $Comp
-L Connector_Generic:Conn_01x02 J?
+L Connector_Generic:Conn_01x02 J5
 U 1 1 615FEEFD
 P 5550 3250
-F 0 "J?" V 5514 3062 50  0000 R CNN
+F 0 "J5" V 5514 3062 50  0000 R CNN
 F 1 "Power connector" V 5423 3062 50  0000 R CNN
-F 2 "" H 5550 3250 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 5550 3250 50  0001 C CNN
 F 3 "~" H 5550 3250 50  0001 C CNN
 	1    5550 3250
 	0    -1   -1   0   
@@ -2256,4 +2244,20 @@ Wire Wire Line
 Wire Wire Line
 	6550 3450 6550 3850
 Connection ~ 6550 3850
+Text Notes 2350 7450 0    50   ~ 0
+Address decoding propagation delay: app. 60ns
+$Comp
+L power:GND #PWR01
+U 1 1 619A60E2
+P 750 2200
+F 0 "#PWR01" H 750 1950 50  0001 C CNN
+F 1 "GND" H 755 2027 50  0000 C CNN
+F 2 "" H 750 2200 50  0001 C CNN
+F 3 "" H 750 2200 50  0001 C CNN
+	1    750  2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	750  2000 750  2200
+Connection ~ 750  2000
 $EndSCHEMATC
