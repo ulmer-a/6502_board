@@ -1293,7 +1293,7 @@ U 1 1 639DB7C0
 P 8350 5000
 F 0 "J4" H 8400 6017 50  0000 C CNN
 F 1 "Expansion Port" H 8400 5926 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x17_P2.54mm_Horizontal" H 8350 5000 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x17_P2.54mm_Vertical" H 8350 5000 50  0001 C CNN
 F 3 "~" H 8350 5000 50  0001 C CNN
 	1    8350 5000
 	1    0    0    -1  
