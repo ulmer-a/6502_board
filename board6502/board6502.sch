@@ -665,16 +665,14 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR014
 U 1 1 615555AE
-P 4850 3450
-F 0 "#PWR014" H 4850 3300 50  0001 C CNN
-F 1 "+5V" H 4865 3623 50  0000 C CNN
-F 2 "" H 4850 3450 50  0001 C CNN
-F 3 "" H 4850 3450 50  0001 C CNN
-	1    4850 3450
+P 4850 3300
+F 0 "#PWR014" H 4850 3150 50  0001 C CNN
+F 1 "+5V" H 4865 3473 50  0000 C CNN
+F 2 "" H 4850 3300 50  0001 C CNN
+F 3 "" H 4850 3300 50  0001 C CNN
+	1    4850 3300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4850 3550 4850 3450
 $Comp
 L chips:W65C22 U4
 U 1 1 61706C19
@@ -1970,7 +1968,6 @@ Connection ~ 5800 4350
 Connection ~ 6550 4350
 Wire Wire Line
 	6550 4350 6550 4400
-Connection ~ 4850 3550
 Wire Wire Line
 	4600 3550 4850 3550
 Wire Notes Line
@@ -2235,4 +2232,28 @@ Wire Wire Line
 	1600 2500 1800 2500
 Wire Wire Line
 	1600 2650 2050 2650
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 615FEEFD
+P 5550 3250
+F 0 "J?" V 5514 3062 50  0000 R CNN
+F 1 "Power connector" V 5423 3062 50  0000 R CNN
+F 2 "" H 5550 3250 50  0001 C CNN
+F 3 "~" H 5550 3250 50  0001 C CNN
+	1    5550 3250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5550 3450 4850 3450
+Wire Wire Line
+	4850 3300 4850 3450
+Wire Wire Line
+	4850 3450 4850 3550
+Connection ~ 4850 3450
+Connection ~ 4850 3550
+Wire Wire Line
+	5650 3450 6550 3450
+Wire Wire Line
+	6550 3450 6550 3850
+Connection ~ 6550 3850
 $EndSCHEMATC
