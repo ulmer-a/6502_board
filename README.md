@@ -5,6 +5,8 @@ the firmware/monitor program.
 
 ![PCB Rendering](./screenshot.png)
 
+Check out more info on this project [on my website](https://www.aulmer.at/6502.html).
+
 ## Specifications
 ### CPU and memory
 * W65C02 8-bit CPU
