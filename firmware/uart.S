@@ -48,7 +48,7 @@ _tx_buffer_full:
 sys_getchar:
     sei                     // disable interrupts to avoid race conditions
     lda RX_AVL_COUNT        // fetch available byte count
-    bne _getchar            // if there are bytes available, jump to _getchar
+    bne _do_getchar         // if there are bytes available, jump to _do_getchar
     cli                     // otherwise, re-enable interrupts
     wai                     // then wait for an interrupt
     bra sys_getchar         // and check again whether bytes are available
