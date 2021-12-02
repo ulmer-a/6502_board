@@ -6,7 +6,7 @@
 .exportzp TX_WRITE_PTR := $22
 .exportzp RX_AVL_COUNT := $23
 .exportzp RX_READ_PTR  := $24
-.exportzp RX_WRITE_PTR := $25  
+.exportzp RX_WRITE_PTR := $25
 
 VIA_DDRB = $dff2
 VIA_PORTB = $dff0
@@ -45,8 +45,6 @@ _nmi:
     bcc done
     sta $dfe0
 done:
-    lda #65
-    sta $dfe0
     rti
 
 

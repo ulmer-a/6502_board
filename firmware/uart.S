@@ -71,14 +71,8 @@ uart_rx:
     ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
     sta RX_BUFFER, x        ; write byte to the RX buffer
     inc RX_WRITE_PTR        ; increment RX buffer write pointer
-    lda RX_AVL_COUNT        
-    inc                     ; check whether the RX buffer is already full
-    beq rx_buffer_full
-    inc RX_AVL_COUNT        ; if not, increment available byte count 
+    inc RX_AVL_COUNT        ; increment number of available bytes
     bra uart_irq_end
-rx_buffer_full:             ; if the RX buffer is already full, then also increment
-    inc RX_READ_PTR         ; the read pointer. this makes sure that getchar()
-    bra uart_irq_end        ; will always read the most recent 256 bytes
 
 
     ; sys_putchar(u8)
@@ -129,7 +123,6 @@ try_getchar:
     plp                     ; re-enable interrupts if they were enabled and return
     clc                     ; clear carry in case nothing is available
     rts
-
 
 do_getchar:
     phx
