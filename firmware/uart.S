@@ -36,7 +36,8 @@ uart_init:
     stz UART_STATUS         ; perform software reset of the 6551 chip
     lda #$1f                ; 8N1, 19200 baud
     sta UART_CTRL           ; => control register
-    lda #$09                ; enable 6551, enable RX IRQ
+    ; lda #$09                ; enable 6551, enable RX IRQ
+    lda #$19                ; enable 6551, enable RX IRQ, echo mode
     sta UART_CMD            ; => command register
     rts
 
@@ -71,6 +72,7 @@ rx_buffer_full:             ; if the RX buffer is already full, then also increm
 
 
 uart_tx:
+    
     bra uart_irq_end
 
 

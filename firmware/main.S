@@ -10,13 +10,25 @@
 .exportzp RX_READ_PTR  := $24
 .exportzp RX_WRITE_PTR := $25  
 
+VIA_DDRB = $dff2
+VIA_PORTB = $dff0
+
 .segment "syscalls"
     jmp putchar      ; 0xe000
     jmp getchar      ; 0xe003
+    jmp try_getchar  ; 0xe006
 
 .segment "code"
 _start:
-    jsr uart_init
+    sei                 ; disable interrupts during setup
+
+    lda #$0f            ; preliminary VIA setup 
+    sta VIA_DDRB
+    lda #$05
+    sta VIA_PORTB
+
+    jsr uart_init       ; setup 6551 uart chip
+    cli                 ; enable interrupts
 
 loop:
     wai

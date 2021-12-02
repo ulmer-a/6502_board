@@ -14,7 +14,7 @@ debug: firmware.bin
 	u6502em -r firmware.bin -d
 
 flash:
-	minipro -p "AT28C64B" -w monitor.bin
+	minipro -p "AT28C64B" -w firmware.bin
 
 console:
 	screen /dev/ttyUSB0 19200
