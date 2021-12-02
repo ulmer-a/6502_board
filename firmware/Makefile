@@ -10,8 +10,8 @@ OBJECTS = main.o uart.o
 firmware.bin: $(OBJECTS)
 	ld65 -C firmware.ld $(OBJECTS) -o firmware.bin
 
-debug: monitor.bin
-	u6502em -r monitor.bin -d
+debug: firmware.bin
+	u6502em -r firmware.bin -d
 
 flash:
 	minipro -p "AT28C64B" -w monitor.bin
