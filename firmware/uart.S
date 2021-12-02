@@ -71,7 +71,13 @@ uart_rx:
     ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
     sta RX_BUFFER, x        ; write byte to the RX buffer
     inc RX_WRITE_PTR        ; increment RX buffer write pointer
-    inc RX_AVL_COUNT        ; increment number of available bytes
+    lda RX_AVL_COUNT        ; fetch available byte count
+    inc
+    beq rx_buffer_full      ; jmp if byte count reached its maximum
+    sta RX_AVL_COUNT        ; store incremented number of available bytes
+    bra uart_irq_end
+rx_buffer_full:
+    inc RX_READ_PTR
     bra uart_irq_end
 
 
