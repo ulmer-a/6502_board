@@ -36,14 +36,21 @@ uart_init:
     stz UART_STATUS         ; perform software reset of the 6551 chip
     lda #$1f                ; 8N1, 19200 baud
     sta UART_CTRL           ; => control register
+    ; bra echo_off          ; fallthrough intended
 
+
+    ; echo_off()
+    ; disable echo mode and switch to manual transmit mode. use putchar()
+    ; to transmit data.
 .global echo_off
 echo_off:
     lda #$09                ; enable 6551, enable RX IRQ
     sta UART_CMD            ; => command register
     rts
 
-
+    ; echo_on()
+    ; disable manual transmit mode and enable echo mode. every received
+    ; character will be immediately retransmitted. putchar() will not work.
 .global echo_on
 echo_on:
     lda #$11                ; uart enable, RX irq enable, echo mode
@@ -105,12 +112,14 @@ tx_buffer_full:             ; if TX buffer is full, also increment
     ; bytes available, the call will block
 .global getchar
 getchar:
+    php                     ; save interrupt flag status
+getchar_try_again:
     sei                     ; disable interrupts to avoid race conditions
     lda RX_AVL_COUNT        ; fetch available byte count
     bne do_getchar          ; if there are bytes available, jump to _do_getchar
     cli                     ; otherwise, re-enable interrupts
     wai                     ; then wait for an interrupt
-    bra getchar             ; and check again whether bytes are available
+    bra getchar_try_again   ; and check again whether bytes are available
 
 
     ; try_getchar() -> u8, bool
