@@ -1,18 +1,18 @@
-section syscalls
-jmp sys_putchar
-jmp sys_getchar
+.export TX_BUFFER    = $7f00
+.export RX_BUFFER    = $7e00
 
-section text
-    TX_BUFFER    = 0x7f00;
-    RX_BUFFER    = 0x7e00;
+.exportzp TX_AVL_COUNT := $20
+.exportzp TX_READ_PTR  := $21
+.exportzp TX_WRITE_PTR := $22
+.exportzp RX_AVL_COUNT := $23
+.exportzp RX_READ_PTR  := $24
+.exportzp RX_WRITE_PTR := $25
 
-    TX_AVL_COUNT = 0x0020;
-    TX_READ_PTR  = 0x0021;
-    TX_WRITE_PTR = 0x0022;
-    RX_AVL_COUNT = 0x0023;
-    RX_READ_PTR  = 0x0024;
-    RX_WRITE_PTR = 0x0025;
+.segment "syscalls"
+    jmp putchar      ; 0xe000
+    jmp getchar      ; 0xe003
 
+.segment "code"
 _start:
     jsr uart_init
     wai
@@ -22,7 +22,10 @@ _irq_brk:
 _nmi:
     rti
 
-section vectors
+.segment "data"
+    .byte 0
+
+.segment "vectors"
     .word _nmi
     .word _start
     .word _irq_brk

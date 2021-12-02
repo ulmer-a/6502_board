@@ -1,10 +1,14 @@
 
-all: monitor.bin
+all: firmware.bin
 
-SOURCES = monitor.S
+SOURCES = main.S uart.S
+OBJECTS = main.o uart.o
 
-monitor.bin: $(SOURCES)
-	u6502as $(SOURCES) -o $@
+%.o: %.S
+	ca65 -U --cpu 65C02 $< -o $@
+
+firmware.bin: $(OBJECTS)
+	ld65 -C firmware.ld $(OBJECTS) -o firmware.bin
 
 debug: monitor.bin
 	u6502em -r monitor.bin -d
