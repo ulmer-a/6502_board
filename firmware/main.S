@@ -15,6 +15,8 @@ VIA_PORTB = $dff0
     jmp putchar      ; 0xe000
     jmp getchar      ; 0xe003
     jmp try_getchar  ; 0xe006
+    jmp echo_on      ; 0xe009
+    jmp echo_off     ; 0xe00c
 
 .segment "code"
 _start:
@@ -41,10 +43,11 @@ _irq_brk:
 _nmi:
     jsr try_getchar
     bcc done
-    jsr putchar
-    bra _nmi
+    sta $dfe0
 done:
-    rts
+    lda #65
+    sta $dfe0
+    rti
 
 
 .segment "data"

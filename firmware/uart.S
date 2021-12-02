@@ -36,9 +36,22 @@ uart_init:
     stz UART_STATUS         ; perform software reset of the 6551 chip
     lda #$1f                ; 8N1, 19200 baud
     sta UART_CTRL           ; => control register
-    ; lda #$09                ; enable 6551, enable RX IRQ
-    lda #$11                ; enable 6551, enable RX IRQ, echo mode
+    lda #$09                ; enable 6551, enable RX IRQ
     sta UART_CMD            ; => command register
+    rts
+
+
+.global echo_on
+echo_on:
+    lda #$11                ; uart enable, RX irq enable, echo mode
+    sta UART_CMD
+    rts
+
+
+.global echo_off
+echo_off:
+    lda #$09                ; uart enable, RX irq enable, manual transmit
+    sta UART_CMD
     rts
 
 
@@ -52,13 +65,14 @@ uart_irq_end:
     plx
     rts
 
+
 uart_rx:
     lda UART_DATA           ; fetch received data byte
     ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
     sta RX_BUFFER, x        ; write byte to the RX buffer
     inc RX_WRITE_PTR        ; increment RX buffer write pointer
     lda RX_AVL_COUNT        
-    cmp #$ff                ; check whether the RX buffer is already full
+    inc                     ; check whether the RX buffer is already full
     beq rx_buffer_full
     inc RX_AVL_COUNT        ; if not, increment available byte count 
     bra uart_irq_end
@@ -108,12 +122,12 @@ getchar:
     ; carry flag after the call indicates no available data.
 .global try_getchar
 try_getchar:
-    sec                     ; set carry flag, this will indicate success
+    php
     sei                     ; disable interrupts to avoid race conditions
     lda RX_AVL_COUNT        ; fetch available byte count
     bne do_getchar          ; if there are bytes available, jump to _do_getchar
-    clc                     ; otherwise, clear carry,
-    cli                     ; re-enable interrupts and return
+    plp                     ; re-enable interrupts if they were enabled and return
+    clc                     ; clear carry in case nothing is available
     rts
 
 
@@ -123,6 +137,7 @@ do_getchar:
     lda RX_BUFFER, x        ; fetch byte from the RX buffer
     inc RX_READ_PTR         ; make read pointer point to the next available byte
     dec RX_AVL_COUNT        ; decrement available bytes in RX buffer
-    cli                     ; re-enable interrupts
     plx
+    plp                     ; re-enable interrupts if they were enabled
+    sec
     rts
