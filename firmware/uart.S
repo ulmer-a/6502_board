@@ -46,9 +46,13 @@ uart_init:
 uart_irq:
     phx
     lda UART_STATUS         ; read the status register
-    bit #$80                ; test bit 7
-    beq uart_irq_end        ; if clear, then the cause wasn't the uart
+    bit #$80                ; test bit 7 (irq pending)
+    bne uart_rx             ; if clear, then the cause wasn't the uart
+uart_irq_end:               
+    plx
+    rts
 
+uart_rx:
     lda UART_DATA           ; fetch received data byte
     ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
     sta RX_BUFFER, x        ; write byte to the RX buffer
@@ -60,10 +64,7 @@ uart_irq:
     bra uart_irq_end
 rx_buffer_full:             ; if the RX buffer is already full, then also increment
     inc RX_READ_PTR         ; the read pointer. this makes sure that getchar()
-                            ; will always read the most recent 256 bytes
-uart_irq_end:               
-    plx
-    rts
+    bra uart_irq_end        ; will always read the most recent 256 bytes
 
 
     ; sys_putchar(u8)
