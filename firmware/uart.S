@@ -33,11 +33,11 @@ uart_init:
     stz RX_READ_PTR
     stz RX_WRITE_PTR
 
-    stz UART_STATUS     ; perform software reset of the 6551 chip
-    lda #$1f            ; 8N1, 19200 baud
-    sta UART_CTRL       ; => control register
-    lda #$09            ; enable 6551, enable RX IRQ
-    sta UART_CMD        ; => command register
+    stz UART_STATUS         ; perform software reset of the 6551 chip
+    lda #$1f                ; 8N1, 19200 baud
+    sta UART_CTRL           ; => control register
+    lda #$09                ; enable 6551, enable RX IRQ
+    sta UART_CMD            ; => command register
     rts
 
 
