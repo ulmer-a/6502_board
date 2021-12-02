@@ -36,6 +36,9 @@ uart_init:
     stz UART_STATUS         ; perform software reset of the 6551 chip
     lda #$1f                ; 8N1, 19200 baud
     sta UART_CTRL           ; => control register
+
+.global echo_off
+echo_off:
     lda #$09                ; enable 6551, enable RX IRQ
     sta UART_CMD            ; => command register
     rts
@@ -44,13 +47,6 @@ uart_init:
 .global echo_on
 echo_on:
     lda #$11                ; uart enable, RX irq enable, echo mode
-    sta UART_CMD
-    rts
-
-
-.global echo_off
-echo_off:
-    lda #$09                ; uart enable, RX irq enable, manual transmit
     sta UART_CMD
     rts
 
