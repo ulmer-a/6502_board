@@ -67,17 +67,17 @@ uart_irq_end:
 
 
 uart_rx:
-    lda UART_DATA           ; fetch received data byte
-    ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
-    sta RX_BUFFER, x        ; write byte to the RX buffer
+    lda UART_DATA           ; fetch received data byte from the 6551 chip, then
+    ldx RX_WRITE_PTR
+    sta RX_BUFFER, x        ; write the data to the RX buffer at position RX_WRITE_PTR
     inc RX_WRITE_PTR        ; increment RX buffer write pointer
-    lda RX_AVL_COUNT        ; fetch available byte count
-    inc
-    beq rx_buffer_full      ; jmp if byte count reached its maximum
+    lda RX_AVL_COUNT        ; now handle overflow: we only want to increment the
+    inc                     ; available byte count if it hasn't yet reached it's maximum value.
+    beq rx_buffer_full      ; jmp if RX_AVL_COUNT = 0xff
     sta RX_AVL_COUNT        ; store incremented number of available bytes
     bra uart_irq_end
-rx_buffer_full:
-    inc RX_READ_PTR
+rx_buffer_full:             ; if the buffer is full, the read pointer is incremented as well
+    inc RX_READ_PTR         ; so that the most recent 255 bytes are read by getchar() at any time.
     bra uart_irq_end
 
 
@@ -122,21 +122,21 @@ getchar:
     ; carry flag after the call indicates no available data.
 .global try_getchar
 try_getchar:
-    php
-    sei                     ; disable interrupts to avoid race conditions
+    php                     ; save interrupt flag status
+    sei                     ; disable interrupts to avoid data races
     lda RX_AVL_COUNT        ; fetch available byte count
-    bne do_getchar          ; if there are bytes available, jump to _do_getchar
+    bne do_getchar          ; if there are bytes available, jump to do_getchar
     plp                     ; re-enable interrupts if they were enabled and return
-    clc                     ; clear carry in case nothing is available
+    clc                     ; clear carry in case no data has been read
     rts
 
 do_getchar:
     phx
     ldx RX_READ_PTR
-    lda RX_BUFFER, x        ; fetch byte from the RX buffer
+    lda RX_BUFFER, x        ; fetch byte from the RX buffer at position RX_READ_PTR
     inc RX_READ_PTR         ; make read pointer point to the next available byte
-    dec RX_AVL_COUNT        ; decrement available bytes in RX buffer
+    dec RX_AVL_COUNT        ; decrement available byte count in RX buffer
     plx
     plp                     ; re-enable interrupts if they were enabled
-    sec
+    sec                     ; set carry flag to indicate that data has been read
     rts
