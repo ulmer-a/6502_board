@@ -37,7 +37,7 @@ uart_init:
     lda #$1f                ; 8N1, 19200 baud
     sta UART_CTRL           ; => control register
     ; lda #$09                ; enable 6551, enable RX IRQ
-    lda #$19                ; enable 6551, enable RX IRQ, echo mode
+    lda #$11                ; enable 6551, enable RX IRQ, echo mode
     sta UART_CMD            ; => command register
     rts
 
@@ -48,15 +48,7 @@ uart_irq:
     lda UART_STATUS         ; read the status register
     bit #$80                ; test bit 7
     beq uart_irq_end        ; if clear, then the cause wasn't the uart
-    bit #$40                ; test bit 6
-    bne uart_rx             ; if set, data is available
-    bra uart_tx             ; if clear, the device is ready to transmit
-uart_irq_end:
-    plx
-    rts
 
-
-uart_rx:
     lda UART_DATA           ; fetch received data byte
     ldx RX_WRITE_PTR        ; fetch the RX buffer write pointer
     sta RX_BUFFER, x        ; write byte to the RX buffer
@@ -68,12 +60,10 @@ uart_rx:
     bra uart_irq_end
 rx_buffer_full:             ; if the RX buffer is already full, then also increment
     inc RX_READ_PTR         ; the read pointer. this makes sure that getchar()
-    bra uart_irq_end        ; will always read the most recent 256 bytes
-
-
-uart_tx:
-    
-    bra uart_irq_end
+                            ; will always read the most recent 256 bytes
+uart_irq_end:               
+    plx
+    rts
 
 
     ; sys_putchar(u8)

@@ -1,5 +1,3 @@
-;   ULMER 6502 Board UART driver
-
 .export TX_BUFFER    = $7f00
 .export RX_BUFFER    = $7e00
 
