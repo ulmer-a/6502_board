@@ -17,4 +17,4 @@ flash:
 	minipro -p "AT28C64B" -w firmware.bin
 
 console:
-	screen /dev/ttyUSB0 19200
+	screen /dev/ttyUSB0 115200
