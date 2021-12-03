@@ -31,8 +31,8 @@ _irq_brk:
     jsr uart_irq
     bcc irq_end
     jsr via_irq
-    pla
 irq_end:
+    pla
     rti
 
 _nmi:
