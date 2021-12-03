@@ -64,12 +64,14 @@ uart_irq:
     lda UART_STATUS         ; read the status register
     bit #$80                ; test bit 7 (irq pending)
     bne uart_rx             ; if clear, then the cause wasn't the uart
-uart_irq_end:               
+    clc                     ; clear carry to indicate this ^
+uart_irq_end:
     plx
     rts
 
 
 uart_rx:
+    sec                     ; set carry to indicate that the irq has been handled
     lda UART_DATA           ; fetch received data byte from the 6551 chip, then
     ldx RX_WRITE_PTR
     sta RX_BUFFER, x        ; write the data to the RX buffer at position RX_WRITE_PTR

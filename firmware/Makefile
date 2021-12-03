@@ -1,8 +1,8 @@
 
 all: firmware.bin
 
-SOURCES = main.S uart.S
-OBJECTS = main.o uart.o
+SOURCES = main.S uart.S via.S
+OBJECTS = main.o uart.o via.o
 
 %.o: %.S
 	ca65 -U --cpu 65C02 $< -o $@
