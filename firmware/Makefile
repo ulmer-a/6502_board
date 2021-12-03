@@ -1,20 +1,21 @@
+FIRMWARE = firmware.bin
+OBJECTS = $(patsubst %.S, %.o, $(wildcard *.S))
 
-all: firmware.bin
-
-SOURCES = main.S uart.S via.S vectors.S
-OBJECTS = main.o uart.o via.o vectors.o
+all: $(FIRMWARE)
 
 %.o: %.S
-	ca65 -U --cpu 65C02 $< -o $@
+	@ echo " AS  $<"
+	@ ca65 -U --cpu 65C02 $< -o $@
 
-firmware.bin: $(OBJECTS)
-	ld65 -C firmware.ld $(OBJECTS) -o firmware.bin
+$(FIRMWARE): $(OBJECTS)
+	@ echo " LD  $(FIRMWARE)"
+	@ ld65 -C firmware.ld $(OBJECTS) -o $(FIRMWARE)
 
-debug: firmware.bin
-	u6502em -r firmware.bin -d
+debug: $(FIRMWARE)
+	u6502em -r $(FIRMWARE) -d
 
 flash:
-	minipro -p "AT28C64B" -w firmware.bin
+	minipro -p "AT28C64B" -w $(FIRMWARE)
 
 console:
 	screen /dev/ttyUSB0 115200
