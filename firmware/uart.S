@@ -12,6 +12,7 @@ UART_CMD    = $dfe2
 UART_CTRL   = $dfe3
 
 ; ------ Zeropage variables ------
+.importzp TX_PENDING        ; is 1 if transmit cycle is pending
 .importzp TX_AVL_COUNT      ; available bytes in the TX buffer
 .importzp TX_READ_PTR       ; TX buffer read pointer position
 .importzp TX_WRITE_PTR      ; TX buffer write pointer position
@@ -26,6 +27,7 @@ UART_CTRL   = $dfe3
 uart_init:
     ; this function should be called with global interrupts disabled
     ; initialize all driver variables to zero
+    stz TX_PENDING
     stz TX_AVL_COUNT
     stz TX_READ_PTR
     stz TX_WRITE_PTR
@@ -34,7 +36,7 @@ uart_init:
     stz RX_WRITE_PTR
 
     stz UART_STATUS         ; perform software reset of the 6551 chip
-    lda #$10                ; 8N1, 115200 baud
+    lda #$1f                ; 8N1, 115200 baud
     sta UART_CTRL           ; => control register
     ; bra echo_off          ; fallthrough intended
 
@@ -47,6 +49,7 @@ echo_off:
     lda #$09                ; enable 6551, enable RX IRQ
     sta UART_CMD            ; => command register
     rts
+
 
     ; echo_on()
     ; disable manual transmit mode and enable echo mode. every received
@@ -86,28 +89,56 @@ rx_buffer_full:             ; if the buffer is full, the read pointer is increme
     bra uart_irq_end
 
 
+    ; the uart tx function is called whenever the via's timer2
+    ; expires. this is because of the WDC 65C51's hardware bug.
+.global uart_tx
+uart_tx:
+    stz TX_PENDING
+    lda TX_AVL_COUNT
+    beq uart_tx_end         ; if there's no bytes to transmit, jump to end
+    phx
+    ldx TX_READ_PTR
+    lda TX_BUFFER, x        ; load byte to transmit into A
+    sta UART_DATA           ; transmit by writing to the uart data register
+    inc TX_READ_PTR         ; move read pointer forward
+    plx
+    dec TX_AVL_COUNT
+    beq uart_tx_end         ; if there are no bytes left in the buffer, jump to end
+    jsr trigger_transmit    ; otherwise, start another timer cycle
+uart_tx_end:
+    rts
+
+
     ; sys_putchar(u8)
     ; transmits a single byte out the UART interface by writing the byte
     ; to the TX buffer and triggering a transfer if necessary.
 .global putchar
 putchar:
+    php                     ; save interrupt flag status
     sei                     ; disable interrupts to avoid race conditions
     phx
     ldx TX_WRITE_PTR        ; load TX buffer write pointer
     sta TX_BUFFER, x        ; store character in TX buffer
-    plx
     inc TX_WRITE_PTR        ; increment TX write pointer
+    plx
+    jsr trigger_transmit    ; trigger a transmit timer cycle if not yet running
     lda TX_AVL_COUNT        ; fetch amount of available bytes in TX buffer
-    cmp #$ff                ; TX buffer is full if available byte count is 0xff
+    inc                     ; TX buffer is full if available byte count is 0xff
     beq tx_buffer_full      ; jump if TX buffer is full
     inc TX_AVL_COUNT        ; if not, increment the available byte count,
-    cli                     ; re-enable interrupts and return
+    plp                     ; re-enable interrupts if they were enabled
     rts
 tx_buffer_full:             ; if TX buffer is full, also increment
     inc TX_READ_PTR         ; the read pointer before re-enabling interrupts
-    cli
+    plp                     ; re-enable interrupts if they were enabled
     rts
 
+trigger_transmit:
+    bbs0 TX_PENDING, tx_triggered
+    jsr start_tx_timer
+    smb0 TX_PENDING
+tx_triggered:
+    rts
 
     ; sys_getchar() -> u8
     ; reads a single byte from the UART RX buffer. if there's no

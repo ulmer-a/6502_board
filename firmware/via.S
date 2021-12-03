@@ -9,8 +9,8 @@ VIA_PORTA = $dff1           ; port A data
 VIA_PORTB = $dff0           ; port B data (leds are on bits 0-2)
 VIA_DDRA  = $dff3           ; data direction register for port A
 VIA_DDRB  = $dff2           ; data direction register for port B
-VIA_T2C_L = $dff8           ; timer 2 low order latch (W) or counter (R)
-VIA_T2C_H = $dff9           ; timer 2 high order counter (R/W)
+VIA_T2_L  = $dff8           ; timer 2 low order latch (W) or counter (R)
+VIA_T2_H  = $dff9           ; timer 2 high order counter (R/W), W = start
 VIA_IFR   = $dffd           ; interrupt flag register
 VIA_IER   = $dffe           ; interrupt enable register
 VIA_ACR   = $dffb           ; auxiliary control register
@@ -26,7 +26,6 @@ via_init:
     sta VIA_DDRB
     lda #$05
     sta VIA_PORTB
-
     
     lda #(1 << 5)           ; setting ACR bit 5 will set the mode of operation for timer 2
     ora VIA_ACR             ; to count pulses on PB6, which is connected to the uart clock (~1.8MHz)
@@ -38,9 +37,11 @@ via_init:
     rts
 
 
-.global start_uart_tx_timer
-start_uart_tx_timer:
-    
+.global start_tx_timer
+start_tx_timer:
+    lda #$ff                ; TODO: adjust value
+    sta VIA_T2_L            ; load the low-value of timer 2
+    sta VIA_T2_H            ; load the high-value of timer 2. this will start the timer.
     rts
 
 
@@ -57,7 +58,8 @@ via_handle_irq:
 
 
 timer2_irq:
-    lda #65
-    sta $dfe0
-    sec
+    lda VIA_T2_L            ; clear the interrupt source
+    jsr uart_tx             ; call the uart's transmit interrupt handler.
+    sec                     ; set carry flag to indicate that the interrupt
+                            ; source has been cleared
     rts

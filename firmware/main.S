@@ -7,6 +7,7 @@
 .exportzp RX_AVL_COUNT := $23
 .exportzp RX_READ_PTR  := $24
 .exportzp RX_WRITE_PTR := $25
+.exportzp TX_PENDING   := $26
 
 .segment "syscalls"
     jmp putchar      ; 0xe000
@@ -29,7 +30,7 @@ loop:
 _irq_brk:
     pha
     jsr uart_irq
-    bcc irq_end
+    bcs irq_end
     jsr via_irq
 irq_end:
     pla
@@ -38,7 +39,8 @@ irq_end:
 _nmi:
     jsr try_getchar
     bcc done
-    sta $dfe0
+    jsr putchar
+    bra _nmi
 done:
     rti
 
