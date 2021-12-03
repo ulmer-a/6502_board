@@ -36,7 +36,7 @@ uart_init:
     stz RX_WRITE_PTR
 
     stz UART_STATUS         ; perform software reset of the 6551 chip
-    lda #$1f                ; 8N1, 115200 baud
+    lda #$10                ; 8N1, 115200 baud
     sta UART_CTRL           ; => control register
     ; bra echo_off          ; fallthrough intended
 

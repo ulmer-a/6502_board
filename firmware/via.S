@@ -39,8 +39,11 @@ via_init:
 
 .global start_tx_timer
 start_tx_timer:
-    lda #$ff                ; TODO: adjust value
+    ; timer 2 is driven with 16 times the baud rate of the uart.
+    ; by experimentation it turns out that a value of 276 just about works
+    lda #$14                ; 0x14
     sta VIA_T2_L            ; load the low-value of timer 2
+    lda #$01                ; 0x01 => 0x0114 = 276
     sta VIA_T2_H            ; load the high-value of timer 2. this will start the timer.
     rts
 
