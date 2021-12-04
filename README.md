@@ -2,8 +2,9 @@
 
 This repo contains kicad schematics, netlist, layout and gerber plots for the pcb,
 as well as a parts list and the firmware (basic features are working, but it's
-still under development). All parts are new and readily available as of Dec '21.
-This board and all it's software have been developed using only open-source tools.
+still under development). The computer is fully functional and all parts (or
+equivalent alternatives) are readily available as of Nov '21. Moreover, the board
+and all of it's firmware have been developed using only open-source tools.
 
 You are welcome to use everything contained in this repository under the
 terms of the GNU General Public License v3.0.
