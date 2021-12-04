@@ -4,7 +4,7 @@ This repo contains schematics, netlist, layout and gerber plots for the pcb,
 as well as a parts list and the firmware (basic features are working, but it's
 still under development). All parts are new and readily available as of Dec '21.
 
-![PCB Rendering](./screenshot.png)
+![PCB Rendering](./board_scaled.jpg)
 
 Check out more info on this project [on my website](https://www.aulmer.at/6502.html).
 
