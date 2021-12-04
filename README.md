@@ -1,7 +1,8 @@
 # Homebrew 6502 computer
 
-This repo contains schematics for the PCB, a parts list and
-the firmware/monitor program.
+This repo contains schematics, netlist, layout and gerber plots for the pcb,
+as well as a parts list and the firmware (basic features are working, but it's
+still under development). All parts are new and readily available as of Dec '21.
 
 ![PCB Rendering](./screenshot.png)
 
