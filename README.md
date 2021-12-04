@@ -8,43 +8,50 @@ the firmware/monitor program.
 Check out more info on this project [on my website](https://www.aulmer.at/6502.html).
 
 ## Specifications
-### CPU and memory
-* W65C02 8-bit CPU
-* 32KB of on-board SRAM
-* 8KB of on-board EEPROM
 
-### Onboard I/O
-* W65C51N ACIA UART chip (max baud rate 19200)
-* W65C22N I/O chip
-    * 12 general purpose I/O pins
-    * serial shift register
-    * software reset bit (can be disabled)
-* Software reset
-
-### Ports and headers
-* USB A-type power supply
-* 18 pin I/O pinheader with general purpose I/O pins
+* 65c02 8-bit CPU along with 32KB RAM and 8K ROM
+* 65c22 VIA provides some GPIO pins and timers
+* 65c51 ACIA provides a serial port with up to 115200 baud
+* 4 status led's
+* 18 pin I/O pinheader with general purpose I/O pins (VIA)
 * 34 pin expansion pinheader exposing full address and data bus
-as well as other interesting lines
-* `SYNC`, `CLK` and `HALT` signals are fed to the expansion pinheader
-so that a hardware debugger may be implemented
+as well as other interesting lines (`SYNC`, `CLK` and `HALT`)
+
+## Firmware
+
+The firmware is currently under development but already provides
+`getchar()` and `putchar()` functions to nicely interact with any
+device attached to the serial port. these are implemented fully
+asynchronously.
 
 ## Memory map and I/O addresses
+
+```plaintext
++-----------------------+   <- 0x0000     --.
+|       zeropage        |                   |
++-----------------------+   <- 0x0100       |
+|        stack          |                   |
++-----------------------+   <- 0x0200       |
+|      available        |                   |
+|         RAM           |                    > 32k RAM
+|         ...           |                   |
++-----------------------+   <- 0x7e00       |
+|     UART RX buffer    |                   |
++-----------------------+   <- 0x7f00       |
+|     UART TX buffer    |                   |
++-----------------------+   <- 0x8000     --'
+|                       |
+|      unallocated      |         reserved for expansion shields etc.
+|                       |
++-----------------------+   <- 0xdfe0     --.
+|      65C51 UART       |                   |
++-----------------------+   <- 0xdff0        > memory mapped I/O
+|      65C22 VIA        |                   |
++-----------------------+   <- 0xe000     --:
+|     firmware code     |                   |
+|    firmware rodata    |                   |
+|                       |                    > 8k ROM
++-----------------------+   <- 0xfffa       |
+|        vectors        |                   |
++-----------------------+   <- 0xffff     --'
 ```
-0x0000 - 0x7fff   32K   RAM
-0x8000 - 0xdfdf  ~24K   reserved for future use
-0xdfe0 - 0xdfef   16B   W65C51N UART controller
-0xdff0 - 0xdfff   16B   W65C22N VIA I/O controller
-0xe000 - 0xffff    8K   ROM (readonly)
-```
-
-## Special registers
-
-### Software RESET
-The whole board can be reset by writing a zero into bit 3
-of the VIA's port B, when data direction is set to output.
-Note that any RAM will not be cleared.
-
-### Onboard LED's
-LED's are mapped to PB0-PB2 of the VIA. To switch LED's they
-must first be initilized as outputs.
