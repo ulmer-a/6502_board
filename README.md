@@ -1,8 +1,12 @@
 # Homebrew 6502 computer
 
-This repo contains schematics, netlist, layout and gerber plots for the pcb,
+This repo contains kicad schematics, netlist, layout and gerber plots for the pcb,
 as well as a parts list and the firmware (basic features are working, but it's
 still under development). All parts are new and readily available as of Dec '21.
+This board and all it's software have been developed using only open-source tools.
+
+You are welcome to use everything contained in this repository under the
+terms of the GNU General Public License v3.0.
 
 ![PCB Rendering](./board_scaled.jpg)
 
