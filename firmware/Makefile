@@ -1,13 +1,18 @@
-FIRMWARE = firmware.bin
-OBJECTS = $(patsubst %.S, %.o, $(wildcard *.S))
+FIRMWARE = build/firmware.bin
+OBJECTS = $(patsubst %.S, build/%.o, $(wildcard *.S))
 
 all: $(FIRMWARE)
 
-%.o: %.S
+.phony: all debug flash console
+
+build/%.o: %.S
 	@ echo " AS  $<"
 	@ ca65 -U --cpu 65C02 $< -o $@
 
-$(FIRMWARE): $(OBJECTS)
+build:
+	@ mkdir -p build/
+
+$(FIRMWARE): build $(OBJECTS)
 	@ echo " LD  $(FIRMWARE)"
 	@ ld65 -C firmware.ld $(OBJECTS) -o $(FIRMWARE)
 
@@ -19,3 +24,6 @@ flash:
 
 console:
 	screen /dev/ttyUSB0 115200
+
+clean:
+	rm build/
