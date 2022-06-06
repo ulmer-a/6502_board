@@ -1,18 +1,31 @@
-FIRMWARE = build/firmware.bin
-OBJECTS = $(patsubst %.S, build/%.o, $(wildcard *.S))
+# configure the target cpu here
+CPU 	?= 65C02
+O       ?= build
+
+VERSION = $(shell cat version.txt)
+BUILD_DATE = $(shell date +%d-%m-%Y)
+
+FIRMWARE = $(O)/firmware.bin
+OBJECTS = $(patsubst %.S, $(O)/%.o, $(wildcard *.S))
 
 all: $(FIRMWARE)
 
 .phony: all debug flash console
 
-build/%.o: %.S
+$(O)/%.o: %.S
 	@ echo " AS  $<"
-	@ ca65 -U --cpu 65C02 $< -o $@
+	@ ca65 -U --cpu $(CPU) $< -o $@ -I $(O)
 
-build:
-	@ mkdir -p build/
+$(O):
+	@ mkdir -p $(O)/
 
-$(FIRMWARE): build $(OBJECTS)
+$(O)/config.inc: $(O)
+	@ echo " CFG $@"
+	@ echo ".define CPU \"$(CPU)\"" > $@
+	@ echo ".define VERSION \"$(VERSION)\"" >> $@
+	@ echo ".define BUILD_DATE \"$(BUILD_DATE)\"" >> $@
+
+$(FIRMWARE): $(O)/config.inc $(OBJECTS)
 	@ echo " LD  $(FIRMWARE)"
 	@ ld65 -C firmware.ld $(OBJECTS) -o $(FIRMWARE)
 
@@ -26,4 +39,4 @@ console:
 	screen /dev/ttyUSB0 115200
 
 clean:
-	rm build/
+	rm $(O)/
