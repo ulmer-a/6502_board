@@ -31,7 +31,7 @@ $(O)/config.inc: $(O)
 
 $(FIRMWARE): $(O)/config.inc $(OBJECTS)
 	@ echo " LD  $(FIRMWARE)"
-	@ ld65 -C firmware.ld -Ln lbl.ln $(OBJECTS) -o $(FIRMWARE)
+	@ ld65 -C firmware.ld -Ln $(O)/symbols.txt $(OBJECTS) -o $(FIRMWARE)
 
 debug: $(FIRMWARE)
 	u6502em -r $(FIRMWARE) -d
