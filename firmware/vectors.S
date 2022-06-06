@@ -16,6 +16,8 @@
 
 ; ------ reset vector handler ------ 
 .segment "code"
+
+.global _start
 _start:
     sei                 ; disable interrupts during setup
     cld                 ; clear decimal flag

@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 ; ----------------------------------------------------------------------------
 ; INPUT CONVERSION ERROR:  ILLEGAL CHARACTER

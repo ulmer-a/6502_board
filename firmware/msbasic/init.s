@@ -1,4 +1,4 @@
-.segment "INIT"
+.segment "code"
 
 .ifdef KBD
 FNDLIN2:

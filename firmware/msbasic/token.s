@@ -103,7 +103,7 @@
 		keyword	"=", TOKEN_EQUAL
 		keyword	"<"
 
-        .segment "VECTORS"
+        .segment "tables"
 UNFNC:
 
 		keyword_addr "SGN", SGN, TOKEN_SGN
@@ -125,16 +125,16 @@ UNFNC:
 		keyword_addr "RND", RND
 		keyword_addr "LOG", LOG
 		keyword_addr "EXP", EXP
-.segment "VECTORS"
+.segment "tables"
 UNFNC_COS:
 		keyword_addr "COS", COS
-.segment "VECTORS"
+.segment "tables"
 UNFNC_SIN:
 		keyword_addr "SIN", SIN
-.segment "VECTORS"
+.segment "tables"
 UNFNC_TAN:
 		keyword_addr "TAN", TAN
-.segment "VECTORS"
+.segment "tables"
 UNFNC_ATN:
 		keyword_addr "ATN", ATN
 .ifdef KBD
@@ -154,10 +154,10 @@ UNFNC_ATN:
 .ifdef CONFIG_2
 		keyword	"GO", TOKEN_GO
 .endif
-        .segment "KEYWORDS"
+        .segment "data"
 		.byte   0
 
-        .segment "VECTORS"
+        .segment "tables"
 MATHTBL:
         .byte   $79
         .word   FADDT-1

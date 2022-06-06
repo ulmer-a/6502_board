@@ -2,7 +2,7 @@
 ; this code is identical across all versions of
 ; BASIC
 
-.segment "CODE"
+.segment "code"
 
 ; ----------------------------------------------------------------------------
 ; CALLED BY "NEXT" AND "FOR" TO SCAN THROUGH

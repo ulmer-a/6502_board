@@ -6,7 +6,7 @@
 
 ; MICROTAN has some nonstandard extension to LIST here
 
-.segment "CODE"
+.segment "code"
 
 MEMERR:
         ldx     #ERR_MEMFULL

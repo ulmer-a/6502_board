@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 .ifdef AIM65
 PRINT:

@@ -11,9 +11,9 @@
 ; This way, we count up with every token. The DUMMY segment
 ; doesn't get linked into the binary.
 .macro init_token_tables
-        .segment "VECTORS"
+        .segment "tables"
 TOKEN_ADDRESS_TABLE:
-        .segment "KEYWORDS"
+        .segment "data"
 TOKEN_NAME_TABLE:
 		.segment "DUMMY"
 DUMMY_START:
@@ -31,7 +31,7 @@ DUMMY_START:
 
 ; lay down a keyword, optionally define a token symbol
 .macro keyword key, token
-		.segment "KEYWORDS"
+		.segment "data"
 		htasc	key
 		define_token token
 .endmacro
@@ -39,7 +39,7 @@ DUMMY_START:
 ; lay down a keyword and an address (RTS style),
 ; optionally define a token symbol
 .macro keyword_rts key, vec, token
-        .segment "VECTORS"
+        .segment "tables"
 		.word	vec-1
 		keyword key, token
 .endmacro
@@ -47,7 +47,7 @@ DUMMY_START:
 ; lay down a keyword and an address,
 ; optionally define a token symbol
 .macro keyword_addr key, vec, token
-        .segment "VECTORS"
+        .segment "tables"
 		.addr	vec
 		keyword key, token
 .endmacro
@@ -58,12 +58,12 @@ DUMMY_START:
 .endmacro
 
 .macro init_error_table
-        .segment "ERROR"
+        .segment "data"
 ERROR_MESSAGES:
 .endmacro
 
 .macro define_error error, msg
-        .segment "ERROR"
+        .segment "data"
 		error := <(*-ERROR_MESSAGES)
 		htasc msg
 .endmacro

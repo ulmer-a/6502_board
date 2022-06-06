@@ -1,6 +1,6 @@
 ; global messages: "error", "in", "ready", "break"
 
-.segment "CODE"
+.segment "code"
 
 QT_ERROR:
 .ifdef KBD

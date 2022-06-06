@@ -1,4 +1,4 @@
-.segment "CHRGET"
+.segment "code"
 RAMSTART1:
 GENERIC_CHRGET:
         inc     TXTPTR

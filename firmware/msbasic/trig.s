@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 .ifndef SYM1
 SIN_COS_TAN_ATN:

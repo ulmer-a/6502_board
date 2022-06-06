@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 ; ----------------------------------------------------------------------------
 ; COMPUTE ADDRESS OF FIRST VALUE IN ARRAY

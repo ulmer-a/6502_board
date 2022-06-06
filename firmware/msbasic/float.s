@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 TEMP1X = TEMP1+(5-BYTES_FP)
 

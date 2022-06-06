@@ -1,6 +1,6 @@
 ; KBD specific patches
 
-.segment "CODE"
+.segment "code"
 
 .ifdef KBD
 VARTAB_MINUS_2_TO_AY:

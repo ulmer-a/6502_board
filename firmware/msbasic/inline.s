@@ -1,4 +1,4 @@
-.segment "CODE"
+.segment "code"
 
 .ifndef CONFIG_NO_INPUTBUFFER_ZP
 L2420:
