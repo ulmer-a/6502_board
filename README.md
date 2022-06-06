@@ -1,34 +1,31 @@
-# Homebrew 6502 computer
+# Homebrew 6502 single board computer (running MS BASIC)
 
 This repo contains kicad schematics, netlist, layout and gerber plots for the pcb,
-as well as a parts list and the firmware (basic features are working, but it's
-still under development). The computer is fully functional and all parts (or
-equivalent alternatives) are readily available as of Nov '21. Moreover, the board
-and all of it's firmware have been developed using only open-source tools.
+as well as a parts list, the firmware and a port of Microsoft BASIC. The board is
+fully functional and all parts (or equivalent alternatives) are readily available
+as of Nov '21.
 
 You are welcome to use everything contained in this repository under the
-terms of the GNU General Public License v3.0.
+terms of the GNU General Public License v3.0, except for MS BASIC, which is
+made available under a BSD 2-clause license.
 
 ![PCB Rendering](./board_scaled.jpg)
-
-Check out more info on this project [on my website](https://www.aulmer.at/6502.html).
 
 ## Specifications
 
 * 65c02 8-bit CPU along with 32KB RAM and 8K ROM
 * 65c22 VIA provides some GPIO pins and timers
 * 65c51 ACIA provides a serial port with up to 115200 baud
-* 4 status led's
+* 4 status led's (3 of them are freely programmable)
 * 18 pin I/O pinheader with general purpose I/O pins (VIA)
 * 34 pin expansion pinheader exposing full address and data bus
 as well as other interesting lines (`SYNC`, `CLK` and `HALT`)
 
 ## Firmware
 
-The firmware is currently under development but already provides
-`getchar()` and `putchar()` functions to nicely interact with any
-device attached to the serial port. these are implemented fully
-asynchronously.
+The firmware initializes the system and provides drivers for the
+GPIOs, timers and the UART. It also provides routines to support
+the execution of MS BASIC.
 
 ## Memory map and I/O addresses
 
@@ -56,8 +53,8 @@ asynchronously.
 +-----------------------+   <- 0xe000     --:
 |     firmware code     |                   |
 |    firmware rodata    |                   |
-|                       |                    > 8k ROM
+|       MS BASIC        |                    > 8k ROM
 +-----------------------+   <- 0xfffa       |
-|        vectors        |                   |
+|   reset/irq vectors   |                   |
 +-----------------------+   <- 0xffff     --'
 ```
