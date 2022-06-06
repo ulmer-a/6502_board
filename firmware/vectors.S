@@ -1,6 +1,7 @@
 ; vector definitions and startup code for the ULMER 65C02 board
 ; Copyright (C) 2021 Alexander Ulmer
 
+.zeropage
 ; ------ static variable assignments ------
 .export   TX_BUFFER     = $7f00
 .export   RX_BUFFER     = $7e00
@@ -13,19 +14,11 @@
 .exportzp TX_PENDING   := $26
 
 
-; ------ system call vectors ------
-.segment "syscalls"
-    jmp putchar      ; 0xe000
-    jmp getchar      ; 0xe003
-    jmp try_getchar  ; 0xe006
-    jmp echo_on      ; 0xe009
-    jmp echo_off     ; 0xe00c
-
-
 ; ------ reset vector handler ------ 
 .segment "code"
 _start:
     sei                 ; disable interrupts during setup
+    cld                 ; clear decimal flag
     jsr via_init        ; setup 6522 io chip (via)
     jsr uart_init       ; setup 6551 uart chip (acia)
     cli                 ; enable interrupts
@@ -58,7 +51,7 @@ _irq_return:
 
 
 ; ------ reset and interrupt vectors ------
-.segment "vectors"
+.segment "vecs"
     .word _nmi
     .word _start
     .word _irq_brk

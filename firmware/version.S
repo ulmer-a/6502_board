@@ -5,7 +5,6 @@
 firmware_version:
     .byte "ulmer retro firmware v", VERSION, "-", CPU     ; version/cpu
     .byte " (built ", BUILD_DATE, ")", $0d, $0a           ; build date
-    .byte "Copyright (C) 2022 Alexander Ulmer", $0d, $0a  ; copyright
     .byte $0d, $0a, $00                                   ; termination
 
 .segment "code"
