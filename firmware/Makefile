@@ -1,14 +1,14 @@
 # configure the target cpu here
-CPU 	?= 65C02
-O       ?= build
+CPU 			?= 65C02
+O       		?= build
 
-VERSION = $(shell cat version.txt)
-BASIC_VERSION = 2.22
-BUILD_DATE = $(shell date +%d-%m-%Y)
+BASIC_NAME 		?= KATHI BASIC <3
+BASIC_VERSION 	?= $(shell git rev-parse --short HEAD)
+BUILD_DATE 		= $(shell date +%d-%m-%Y)
 
-FIRMWARE = $(O)/firmware.bin
-SOURCES = $(wildcard *.S) msbasic/msbasic.S
-OBJECTS = $(patsubst %.S, $(O)/%.o, $(SOURCES))			
+FIRMWARE 		= $(O)/firmware.bin
+SOURCES 		= $(wildcard *.S) msbasic/msbasic.S
+OBJECTS 		= $(patsubst %.S, $(O)/%.o, $(SOURCES))
 
 all: $(FIRMWARE)
 
@@ -25,8 +25,8 @@ $(O):
 $(O)/config.inc: $(O)
 	@ echo " CFG $@"
 	@ echo ".define CPU \"$(CPU)\"" > $@
-	@ echo ".define VERSION \"$(VERSION)\"" >> $@
-	@ echo ".define BASIC_VERSION \"$(BASIC_VERSION)\"" >> $@
+	@ echo ".define BAS_VERSION \"$(BASIC_VERSION)\"" >> $@
+	@ echo ".define BAS_BRANDING \"$(BASIC_NAME)\"" >> $@
 	@ echo ".define BUILD_DATE \"$(BUILD_DATE)\"" >> $@
 
 $(FIRMWARE): $(O)/config.inc $(OBJECTS)

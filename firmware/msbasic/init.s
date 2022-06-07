@@ -27,6 +27,7 @@
 ; Ported to the ulmer 6502 sbc board
 ; by Alexander Ulmer <alex@gurdinet.at>
 
+.include "config.inc"
 
 .segment "code"
 
@@ -508,60 +509,14 @@ QT_TERMINAL_WIDTH:
         .byte   "WIDTH"
         .byte   0
   .endif
-QT_BYTES_FREE:
-        .byte   " BYTES FREE"
-  .ifdef CBM1
-  .elseif .def(CBM2)
-        .byte   CR,0
-  .elseif .def(APPLE)
-        .byte   0
-  .else
-        .byte   CR,LF,CR,LF
-  .endif
-QT_BASIC:
-  .ifdef OSI
-        .byte   "OSI 6502 BASIC VERSION 1.0 REV 3.2"
-  .endif
-  .ifdef KIM
-        .byte   "MOS TECH 6502 BASIC V1.1"
-  .endif
-  .ifdef MICROTAN
-        .byte   "MICROTAN BASIC"
-  .endif
-  .ifdef AIM65
-        .byte   "  AIM 65 BASIC V1.1"
-  .endif
-  .ifdef SYM1
-        .byte   "BASIC V1.1"
-  .endif
-  .ifdef CBM1
-        .byte   $13 ; HOME
-        .byte   "*** COMMODORE BASIC ***"
-        .byte   $11,$11,$11,0 ; DOWN/DOWN/DOWN
-  .endif
-  .ifdef CBM2
-        .byte   "### COMMODORE BASIC ###"
-        .byte   CR,CR,0
-  .endif
-  .ifdef APPLE
-        .byte   LF,CR,LF
-		.byte	"APPLE BASIC V1.1"
-  .endif
-  .ifndef CONFIG_CBM_ALL
-        .byte   CR,LF
-    .ifdef MICROTAN
-        .byte   "(C) 1980 MICROSOFT"
-    .elseif .def(AIM65)
-        .byte   0
-        .byte   "(C) 1978 MICROSOFT"
-    .elseif .def(SYM1)
-        .byte   "COPYRIGHT 1978 SYNERTEK SYSTEMS CORP."
-    .else
-        .byte   "COPYRIGHT 1977 BY MICROSOFT CO."
-    .endif
-        .byte   CR,LF
-      .ifndef AIM65
-        .byte   0
-      .endif
-  .endif
+
+  QT_BYTES_FREE:
+    .byte " BYTES FREE"
+    .byte CR,LF,CR,LF
+
+  QT_BASIC:
+    .byte BAS_BRANDING, " ", BAS_VERSION, CR, LF
+    .byte "based on MICROSOFT BASIC 2.22", CR, LF
+    .byte 0
+
 .endif

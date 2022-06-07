@@ -3,7 +3,7 @@
 ; construct string of firmware version and build date
 .segment "data"
 firmware_version:
-    .byte "ulmer retro firmware v", VERSION, "-", CPU     ; version/cpu
+    .byte "ulmer retro firmware cpu=", CPU                ; version/cpu
     .byte " (built ", BUILD_DATE, ")", $0d, $0a           ; build date
     .byte $0d, $0a, $00                                   ; termination
 
